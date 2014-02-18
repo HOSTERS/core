@@ -68,6 +68,8 @@ window.oc_appconfig = {
 };
 window.oc_defaults = {};
 
+window.isPhantom = /phantom/i.test(navigator.userAgent);
+
 // global setup for all tests
 (function setupTests() {
 	var fakeServer = null,

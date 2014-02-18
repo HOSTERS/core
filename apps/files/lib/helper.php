@@ -65,7 +65,7 @@ class Helper
 		} elseif ($aType !== 'dir' and $bType === 'dir') {
 			return 1;
 		} else {
-			return strnatcasecmp($a->getName(), $b->getName());
+			return \OCP\Util::naturalSortCompare($a->getName(), $b->getName());
 		}
 	}
 
