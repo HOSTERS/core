@@ -7,21 +7,28 @@ OC.Share={
 	statuses:{},
 	droppedDown:false,
 	/**
-	 * Loads ALL share statuses from server, stores them in OC.Share.statuses then
-	 * calls OC.Share.updateIcons() to update the files "Share" icon to "Shared"
-	 * according to their share status and share type.
+	 * Loads ALL share statuses from server, stores them in
+	 * OC.Share.statuses then calls OC.Share.updateIcons() to update the
+	 * files "Share" icon to "Shared" according to their share status and
+	 * share type.
 	 */
 	loadIcons:function(itemType) {
 		// Load all share icons
-		$.get(OC.filePath('core', 'ajax', 'share.php'), { fetch: 'getItemsSharedStatuses', itemType: itemType }, function(result) {
-			if (result && result.status === 'success') {
-				OC.Share.statuses = {};
-				$.each(result.data, function(item, data) {
-					OC.Share.statuses[item] = data;
-				});
-				OC.Share.updateIcons(itemType);
+		$.get(
+			OC.filePath('core', 'ajax', 'share.php'),
+			{
+				fetch: 'getItemsSharedStatuses',
+				itemType: itemType
+			}, function(result) {
+				if (result && result.status === 'success') {
+					OC.Share.statuses = {};
+					$.each(result.data, function(item, data) {
+						OC.Share.statuses[item] = data;
+					});
+					OC.Share.updateIcons(itemType);
+				}
 			}
-		});
+		);
 	},
 	/**
 	 * Updates the files' "Share" icons according to the known
@@ -162,19 +169,20 @@ OC.Share={
 				itemSourceName: itemSourceName,
 				expirationDate: expirationDate
 			}, function (result) {
-			if (result && result.status === 'success') {
-				if (callback) {
-					callback(result.data);
-				}
-			} else {
-				if (result.data && result.data.message) {
-					var msg = result.data.message;
+				if (result && result.status === 'success') {
+					if (callback) {
+						callback(result.data);
+					}
 				} else {
-					var msg = t('core', 'Error');
+					if (result.data && result.data.message) {
+						var msg = result.data.message;
+					} else {
+						var msg = t('core', 'Error');
+					}
+					OC.dialogs.alert(msg, t('core', 'Error while sharing'));
 				}
-				OC.dialogs.alert(msg, t('core', 'Error while sharing'));
 			}
-		});
+		);
 	},
 	unshare:function(itemType, itemSource, shareType, shareWith, callback) {
 		$.post(OC.filePath('core', 'ajax', 'share.php'), { action: 'unshare', itemType: itemType, itemSource: itemSource, shareType: shareType, shareWith: shareWith }, function(result) {
