@@ -104,7 +104,9 @@ class MDB2SchemaManager {
 		$toSchema = clone $fromSchema;
 		$toSchema->dropTable($tableName);
 		$sql = $fromSchema->getMigrateToSql($toSchema, $this->conn->getDatabasePlatform());
-		$this->conn->executeQuery($sql);
+		foreach($sql as $s) {
+			$this->conn->executeQuery($s);
+		}
 	}
 
 	/**
