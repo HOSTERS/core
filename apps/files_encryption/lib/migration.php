@@ -25,6 +25,11 @@ namespace OCA\Files_Encryption;
 
 class Migration {
 
+	/**
+	 * @var string
+	 */
+	private $tableName;
+
 	public function __construct($tableName = 'encryption') {
 		$this->tableName = $tableName;
 	}
