@@ -330,10 +330,10 @@ class OC_DB {
 	 */
 	public static function dropTable($tableName) {
 
-		$tableName = OC_Config::getValue('dbtableprefix', 'oc_' ) . trim($tableName);
+		$tableName = trim($tableName);
+		$deleteOldTable = "DROP TABLE `*PREFIX*$tableName`";
 
-		$schemaManager = self::getMDB2SchemaManager();
-		$schemaManager->dropTable($tableName);
+		OC_DB::executeAudited($deleteOldTable);
 	}
 
 	/**
@@ -343,15 +343,6 @@ class OC_DB {
 	public static function removeDBStructure($file) {
 		$schemaManager = self::getMDB2SchemaManager();
 		$schemaManager->removeDBStructure($file);
-	}
-
-	/**
-	 * replaces the ownCloud tables with a new set
-	 * @param string $file path to the MDB2 xml db export file
-	 */
-	public static function replaceDB( $file ) {
-		$schemaManager = self::getMDB2SchemaManager();
-		$schemaManager->replaceDB($file);
 	}
 
 	/**
