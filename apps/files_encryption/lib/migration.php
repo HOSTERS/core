@@ -35,7 +35,7 @@ class Migration {
 		if (!\OC_DB::tableExists($tableName)) {
 			return;
 		}
-		$sql = "select uid, max(recovery_enabled) as recovery_enabled, min(migration_status) as migration_status from `*PREFIX*$tableName` group by uid";
+		$sql = "select `uid`, max(`recovery_enabled`) as `recovery_enabled`, min(`migration_status`) as `migration_status` from `*PREFIX*$tableName` group by `uid`";
 		$query = \OCP\DB::prepare($sql);
 		$result = $query->execute(array())->fetchAll();
 
