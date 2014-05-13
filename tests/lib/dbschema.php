@@ -24,10 +24,8 @@ class Test_DBSchema extends PHPUnit_Framework_TestCase {
 		$content = str_replace( '*dbprefix*', '*dbprefix*'.$r, $content );
 		file_put_contents( $this->schema_file2, $content );
 
-		$prefix = OC_Config::getValue( "dbtableprefix", "oc_" );
-		
-		$this->table1 = $prefix.$r.'cntcts_addrsbks';
-		$this->table2 = $prefix.$r.'cntcts_cards';
+		$this->table1 = $r.'cntcts_addrsbks';
+		$this->table2 = $r.'cntcts_cards';
 	}
 
 	public function tearDown() {
