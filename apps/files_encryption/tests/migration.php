@@ -25,18 +25,38 @@ use OCA\Files_Encryption\Migration;
 
 class Test_Migration extends PHPUnit_Framework_TestCase {
 
+	public function tearDown() {
+		if (OC_DB::tableExists('encryption_test')) {
+			OC_DB::dropTable('encryption_test');
+		}
+		$this->assertTableNotExist('encryption_test');
+	}
+
+	public function setUp() {
+		if (OC_DB::tableExists('encryption_test')) {
+			OC_DB::dropTable('encryption_test');
+		}
+		$this->assertTableNotExist('encryption_test');
+	}
+
 	public function testEncryptionTableDoesNotExist() {
+
+		$this->assertTableNotExist('encryption_test');
 
 		$migration = new Migration('encryption_test');
 		$migration->dropTableEncryption();
+
 		$this->assertTableNotExist('encryption_test');
 
 	}
 
 	public function testDataMigration() {
 
+		$this->assertTableNotExist('encryption_test');
+
 		// create test table
-		OC_DB::updateDbFromStructure(__DIR__ . '/encryption_table.xml');
+		OC_DB::createDbFromStructure(__DIR__ . '/encryption_table.xml');
+		$this->assertTableExist('encryption_test');
 
 		OC_DB::executeAudited('INSERT INTO `*PREFIX*encryption_test` values(?, ?, ?, ?)',
 		array('user1', 'server-side', 1, 1));
@@ -58,7 +78,7 @@ class Test_Migration extends PHPUnit_Framework_TestCase {
 	public function testDuplicateDataMigration() {
 
 		// create test table
-		OC_DB::updateDbFromStructure(__DIR__ . '/encryption_table.xml');
+		OC_DB::createDbFromStructure(__DIR__ . '/encryption_table.xml');
 
 		// in case of duplicate entries we want to preserve 0 on migration status and 1 on recovery
 		$data = array(

@@ -330,10 +330,16 @@ class OC_DB {
 	 */
 	public static function dropTable($tableName) {
 
-		$tableName = trim($tableName);
-		$deleteOldTable = "DROP TABLE `*PREFIX*$tableName`";
+		$tableName = OC_Config::getValue('dbtableprefix', 'oc_' ) . trim($tableName);
 
-		OC_DB::executeAudited($deleteOldTable);
+		self::$connection->beginTransaction();
+
+		$platform = self::$connection->getDatabasePlatform();
+		$sql = $platform->getDropTableSQL($platform->quoteIdentifier($tableName));
+
+		self::$connection->query($sql);
+
+		self::$connection->commit();
 	}
 
 	/**
