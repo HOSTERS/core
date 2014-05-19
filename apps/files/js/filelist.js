@@ -248,7 +248,11 @@
 					var action = this.fileActions.getDefault(mime,type, permissions);
 					if (action) {
 						event.preventDefault();
-						action(filename);
+						action(filename, {
+							$file: $tr,
+							fileList: this,
+							fileActions: this.fileActions
+						});
 					}
 				}
 			}
@@ -731,7 +735,7 @@
 			}
 
 			// display actions
-			this.fileActions.display(filenameTd, false);
+			this.fileActions.display(filenameTd, false, this);
 
 			if (fileData.isPreviewAvailable) {
 				// lazy load / newly inserted td ?
