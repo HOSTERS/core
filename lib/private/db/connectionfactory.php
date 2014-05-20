@@ -7,6 +7,8 @@
  */
 
 namespace OC\DB;
+use Doctrine\DBAL\Event\Listeners\SQLSessionInit;
+use Doctrine\DBAL\Logging\DebugStack;
 
 /**
 * Takes care of creating and configuring Doctrine connections.
@@ -22,7 +24,7 @@ class ConnectionFactory {
 		'mssql' => array(
 			'adapter' => '\OC\DB\AdapterSQLSrv',
 			'charset' => 'UTF8',
-			'driver' => 'pdo_sqlsrv',
+			'driverClass' =>  '\Realestate\MssqlBundle\Driver\PDODblib\Driver',
 			'wrapperClass' => 'OC\DB\Connection',
 		),
 		'mysql' => array(
@@ -80,6 +82,15 @@ class ConnectionFactory {
 				break;
 			case 'oci':
 				$eventManager->addEventSubscriber(new \Doctrine\DBAL\Event\Listeners\OracleSessionInit);
+				break;
+			case 'mssql':
+				$eventManager->addEventSubscriber(new SQLSessionInit('SET ANSI_NULLS ON
+SET ANSI_PADDING ON
+SET ANSI_WARNINGS ON
+SET ARITHABORT ON
+SET CONCAT_NULL_YIELDS_NULL ON
+SET NUMERIC_ROUNDABORT OFF
+SET QUOTED_IDENTIFIER ON'));
 				break;
 		}
 		$connection = \Doctrine\DBAL\DriverManager::getConnection(
