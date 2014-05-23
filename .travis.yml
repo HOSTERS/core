@@ -11,7 +11,7 @@ env:
 
 script:
   # Test lint
-  - sh -c "if [ '$DB' = 'sqlite' ]; then ant lint; fi"
+  - sh -c "if [ '$DB' = 'sqlite' ]; then ant -f build/build.xml prepare lint egrep; fi"
 
   # Run tests
   - touch config/config.php
