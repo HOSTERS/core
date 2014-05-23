@@ -135,7 +135,8 @@ describe('OCA.Files.BreadCrumb tests', function() {
 			oldUpdateTotalWidth;
 
 		beforeEach(function() {
-			dummyDir = '/short name/longer name/looooooooooooonger/even longer long long long longer long/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/last one';
+			dummyDir = '/short name/longer name/looooooooooooonger/' +
+				'even longer long long long longer long/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/last one';
 
 			oldUpdateTotalWidth = BreadCrumb.prototype._updateTotalWidth;
 			BreadCrumb.prototype._updateTotalWidth = function() {
@@ -192,6 +193,8 @@ describe('OCA.Files.BreadCrumb tests', function() {
 			expect($crumbs.eq(6).hasClass('hidden')).toEqual(false);
 		});
 		it('Updates ellipsis on window size increase', function() {
+			window.LOGNOW = true;
+			console.log('############### START');
 			var $crumbs;
 
 			widthStub.returns(500);
@@ -200,7 +203,8 @@ describe('OCA.Files.BreadCrumb tests', function() {
 			$crumbs = bc.$el.find('.crumb');
 
 			// simulate increase
-			$('#testArea').css('width', 1800);
+			$('#testArea').width('width', 1800);
+			widthStub.returns(1800);
 			bc.resize(1800);
 
 			// first one is always visible
@@ -217,6 +221,8 @@ describe('OCA.Files.BreadCrumb tests', function() {
 			// the rest is visible
 			expect($crumbs.eq(5).hasClass('hidden')).toEqual(false);
 			expect($crumbs.eq(6).hasClass('hidden')).toEqual(false);
+			console.log('############### END');
+			window.LOGNOW = false;
 		});
 		it('Updates ellipsis on window size decrease', function() {
 			var $crumbs;
@@ -228,8 +234,8 @@ describe('OCA.Files.BreadCrumb tests', function() {
 			$crumbs = bc.$el.find('.crumb');
 
 			// simulate decrease
-			bc.resize(500);
 			$('#testArea').css('width', 500);
+			bc.resize(500);
 
 			// first one is always visible
 			expect($crumbs.eq(0).hasClass('hidden')).toEqual(false);

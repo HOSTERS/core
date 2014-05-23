@@ -157,23 +157,28 @@
 
 			// initialize with some extra space
 			this.totalWidth = 64;
+if (window.LOGNOW) 			console.log('#1: ', this.totalWidth);
 			// FIXME: this class should not know about global elements
 			if ( $('#navigation').length ) {
 				this.totalWidth += $('#navigation').outerWidth();
 			}
 
+if (window.LOGNOW) 			console.log('#2: ', this.totalWidth);
 			if ( $('#app-navigation').length && !$('#app-navigation').hasClass('hidden')) {
 				this.totalWidth += $('#app-navigation').outerWidth();
 			}
 			this.hiddenBreadcrumbs = 0;
 
+			if (window.LOGNOW) console.log('#3: ', this.totalWidth);
 			for (var i = 0; i < this.breadcrumbs.length; i++ ) {
-				this.totalWidth += $(this.breadcrumbs[i]).get(0).offsetWidth;
+				this.totalWidth += $(this.breadcrumbs[i]).width();
 			}
 
+			if (window.LOGNOW) console.log('#4: ', this.totalWidth);
 			$.each($('#controls .actions'), function(index, action) {
 				self.totalWidth += $(action).outerWidth();
 			});
+			if (window.LOGNOW) console.log('#5: ', this.totalWidth);
 
 		},
 
@@ -188,6 +193,11 @@
 			}
 
 			// window was shrinked since last time or first run ?
+			if (window.LOGNOW) {
+				console.log('this.lastWidth: ', this.lastWidth);
+				console.log('this.totalWidth: ', this.totalWidth);
+				console.log('firstRun: ', firstRun);
+			}
 			if ((width < this.lastWidth || firstRun) && width < this.totalWidth) {
 				if (this.hiddenBreadcrumbs === 0 && this.breadcrumbs.length > 1) {
 					// start by hiding the first breadcrumb after home,
@@ -237,6 +247,10 @@
 			}
 
 			this.lastWidth = width;
+			if (window.LOGNOW) {
+				console.log('this.lastWidth AFTER: ', this.lastWidth);
+				console.log('this.totalWidth AFTER: ', this.totalWidth);
+			}
 		}
 	};
 
