@@ -45,15 +45,30 @@ OC.Settings.Apps = OC.Settings.Apps || {
 				page.find('span.userDocumentation').html("<a id='userDocumentation' href='" + app.documentation.user + "'>" + t('settings', 'User Documentation') + "</a>");
 				page.find('p.documentation').show();
 			}
+			else {
+				page.find('span.userDocumentation').empty();
+				userDocumentation = false;
+			}
 			if (typeof(app.documentation.admin) !== 'undefined') {
 				adminDocumentation = true;
 				page.find('span.adminDocumentation').html("<a id='adminDocumentation' href='" + app.documentation.admin + "'>" + t('settings', 'Admin Documentation') + "</a>");
 				page.find('p.documentation').show();
 			}
+			else {
+				page.find('span.adminDocumentation').empty();
+				adminDocumentation = false;
+			}
 
 			if(userDocumentation && adminDocumentation) {
 				page.find('span.userDocumentation').after(', ');
 			}
+		}
+		else {
+			page.find('p.documentation').hide();
+			page.find('span.userDocumentation').empty();
+			page.find('span.adminDocumentation').empty();
+			userDocumentation = false;
+			adminDocumentation = false;
 		}
 
 		if (typeof(app.website) !== 'undefined') {
