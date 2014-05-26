@@ -29,7 +29,7 @@ class MDB2SchemaManager {
 	}
 
 	/**
-	 * @brief saves database scheme to xml file
+	 * saves database scheme to xml file
 	 * @param string $file name of file
 	 * @param int|string $mode
 	 * @return bool
@@ -43,7 +43,7 @@ class MDB2SchemaManager {
 	}
 
 	/**
-	 * @brief Creates tables from XML file
+	 * Creates tables from XML file
 	 * @param string $file file to read structure from
 	 * @return bool
 	 *
@@ -74,7 +74,7 @@ class MDB2SchemaManager {
 	}
 
 	/**
-	 * @brief update the database scheme
+	 * update the database scheme
 	 * @param string $file file to read structure from
 	 * @param bool $generateSql only return the sql needed for the upgrade
 	 * @return string|boolean
@@ -96,7 +96,7 @@ class MDB2SchemaManager {
 	}
 
 	/**
-	 * @brief drop a table
+	 * drop a table
 	 * @param string $tableName the table to drop
 	 */
 	public function dropTable($tableName) {
@@ -127,8 +127,8 @@ class MDB2SchemaManager {
 	}
 
 	/**
-	 * @brief replaces the ownCloud tables with a new set
-	 * @param $file string path to the MDB2 xml db export file
+	 * replaces the ownCloud tables with a new set
+	 * @param string $file path to the MDB2 xml db export file
 	 */
 	public function replaceDB($file) {
 		$apps = \OC_App::getAllApps();
