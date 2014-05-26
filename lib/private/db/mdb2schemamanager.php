@@ -96,6 +96,15 @@ class MDB2SchemaManager {
 	}
 
 	/**
+	 * @param \Doctrine\DBAL\Schema\Schema $schema
+	 * @return string
+	 */
+	public function generateChangeScript($schema) {
+		$migrator = $this->getMigrator();
+		return $migrator->generateChangeScript($schema);
+	}
+
+	/**
 	 * drop a table
 	 * @param string $tableName the table to drop
 	 */
