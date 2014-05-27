@@ -19,12 +19,17 @@ $(document).ready(function() {
 			var oldCreateRow = OCA.Files.FileList.prototype._createRow;
 			OCA.Files.FileList.prototype._createRow = function(fileData) {
 				var tr = oldCreateRow.apply(this, arguments);
+				var sharePermissions = fileData.permissions;
+				if (fileData.type === 'file') {
+					// files can't be shared with delete permissions
+					sharePermissions = sharePermissions & ~OC.PERMISSION_DELETE;
+				}
+				tr.attr('data-share-permissions', sharePermissions);
 				if (fileData.shareOwner) {
 					tr.attr('data-share-owner', fileData.shareOwner);
-					// user should always be able to rename a mount point
+					// user should always be able to rename and umount a mount point
 					if (fileData.isShareMountPoint) {
-						tr.attr('data-permissions', fileData.permissions | OC.PERMISSION_UPDATE);
-						tr.attr('data-reshare-permissions', fileData.permissions);
+						tr.attr('data-permissions', fileData.permissions | OC.PERMISSION_UPDATE | OC.PERMISSION_DELETE);
 					}
 				}
 				return tr;
@@ -83,7 +88,7 @@ $(document).ready(function() {
 			if ($(tr).data('type') == 'dir') {
 				itemType = 'folder';
 			}
-			var possiblePermissions = $(tr).data('reshare-permissions');
+			var possiblePermissions = $(tr).data('share-permissions');
 			if (_.isUndefined(possiblePermissions)) {
 				possiblePermissions = $(tr).data('permissions');
 			}
