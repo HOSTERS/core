@@ -10,6 +10,7 @@ env:
     - DB=sqlite
 
 script:
+  - phpunit --version
   # Test lint
   - sh -c "if [ '$DB' = 'sqlite' ]; then ant -f build/build.xml prepare lint; fi"
 
