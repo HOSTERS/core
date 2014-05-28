@@ -968,9 +968,9 @@ class View {
 								$subPermissionsCache->set($rootEntry['fileid'], $user, $permissions);
 							}
 							// do not allow renaming/deleting the mount point if they are not movable mounts
-							// for movable mounts we use the permissions given by the owner
+							// for moveable mounts, the root can always be (re) moved
 							if ($mount instanceof MoveableMount) {
-								$rootEntry['permissions'] = $permissions;
+								$rootEntry['permissions'] = $permissions | \OCP\PERMISSION_UPDATE | \OCP\PERMISSION_DELETE;
 							} else {
 								$rootEntry['permissions'] = $permissions & (\OCP\PERMISSION_ALL - (\OCP\PERMISSION_UPDATE | \OCP\PERMISSION_DELETE));
 							}
