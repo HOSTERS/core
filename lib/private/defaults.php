@@ -19,12 +19,13 @@ class OC_Defaults {
 	private $defaultBaseUrl;
 	private $defaultSyncClientUrl;
 	private $defaultDocBaseUrl;
+	private $defaultDocVersion;
 	private $defaultSlogan;
 	private $defaultLogoClaim;
 	private $defaultMailHeaderColor;
 
 	function __construct() {
-		$this->l = OC_L10N::get('core');
+		$this->l = OC_L10N::get('lib');
 
 		$this->defaultEntity = "ownCloud"; /* e.g. company name, used for footers and copyright notices */
 		$this->defaultName = "ownCloud"; /* short name, used when referring to the software */
@@ -32,6 +33,7 @@ class OC_Defaults {
 		$this->defaultBaseUrl = "https://owncloud.org";
 		$this->defaultSyncClientUrl = "https://owncloud.org/sync-clients/";
 		$this->defaultDocBaseUrl = "http://doc.owncloud.org";
+		$this->defaultDocVersion = OC_Util::getVersion()[0] . ".0"; // used to generate doc links
 		$this->defaultSlogan = $this->l->t("web services under your control");
 		$this->defaultLogoClaim = "";
 		$this->defaultMailHeaderColor = "#1d2d44"; /* header color of mail notifications */
@@ -180,7 +182,7 @@ class OC_Defaults {
 		if ($this->themeExist('buildDocLinkToKey')) {
 			return $this->theme->buildDocLinkToKey($key);
 		}
-		return $this->getDocBaseUrl() . '/server/6.0/go.php?to=' . $key;
+		return $this->getDocBaseUrl() . '/server/' . $this->defaultDocVersion . '/go.php?to=' . $key;
 	}
 
 	/**
