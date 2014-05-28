@@ -5,8 +5,8 @@
  *
  * @author Bernhard Posselt
  * @author Morris Jobke
- * @copyright 2012 Bernhard Posselt nukeawhale@gmail.com
- * @copyright 2013 Morris Jobke morris.jobke@gmail.com
+ * @copyright 2012 Bernhard Posselt <dev@bernhard-posselt.com>
+ * @copyright 2013 Morris Jobke <morris.jobke@gmail.com>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU AFFERO GENERAL PUBLIC LICENSE
@@ -70,7 +70,7 @@ class DIContainerTest extends \PHPUnit_Framework_TestCase {
 
 
 	public function testMiddlewareDispatcherIncludesSecurityMiddleware(){
-		$this->container['Request'] = new Request();
+		$this->container['Request'] = new Request(array('method' => 'GET'));
 		$security = $this->container['SecurityMiddleware'];
 		$dispatcher = $this->container['MiddlewareDispatcher'];
 

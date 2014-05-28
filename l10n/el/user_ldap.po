@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-04-08 01:56-0400\n"
-"PO-Revision-Date: 2014-04-08 05:56+0000\n"
+"POT-Creation-Date: 2014-05-28 01:54-0400\n"
+"PO-Revision-Date: 2014-05-28 05:54+0000\n"
 "Last-Translator: I Robot\n"
 "Language-Team: Greek (http://www.transifex.com/projects/p/owncloud/language/el/)\n"
 "MIME-Version: 1.0\n"
@@ -73,6 +73,10 @@ msgstr "Πάρτε πάνω από τις πρόσφατες ρυθμίσεις 
 msgid "Keep settings?"
 msgstr "Διατήρηση ρυθμίσεων;"
 
+#: js/settings.js:93
+msgid "{nbServer}. Server"
+msgstr ""
+
 #: js/settings.js:99
 msgid "Cannot add server configuration"
 msgstr "Αδυναμία προσθήκης ρυθμίσεων διακομιστή"
@@ -89,67 +93,95 @@ msgstr "Επιτυχία"
 msgid "Error"
 msgstr "Σφάλμα"
 
-#: js/settings.js:838
+#: js/settings.js:244
+msgid "Please specify a Base DN"
+msgstr ""
+
+#: js/settings.js:245
+msgid "Could not determine Base DN"
+msgstr ""
+
+#: js/settings.js:276
+msgid "Please specify the port"
+msgstr ""
+
+#: js/settings.js:780
 msgid "Configuration OK"
 msgstr "Η διαμόρφωση είναι εντάξει"
 
-#: js/settings.js:847
+#: js/settings.js:789
 msgid "Configuration incorrect"
 msgstr "Η διαμόρφωση είναι λανθασμένη"
 
-#: js/settings.js:856
+#: js/settings.js:798
 msgid "Configuration incomplete"
 msgstr "Η διαμόρφωση είναι ελλιπής"
 
-#: js/settings.js:873 js/settings.js:882
+#: js/settings.js:815 js/settings.js:824
 msgid "Select groups"
 msgstr "Επιλέξτε ομάδες"
 
-#: js/settings.js:876 js/settings.js:885
+#: js/settings.js:818 js/settings.js:827
 msgid "Select object classes"
 msgstr "Επιλογή κλάσης αντικειμένων"
 
-#: js/settings.js:879
+#: js/settings.js:821
 msgid "Select attributes"
 msgstr "Επιλογή χαρακτηριστικών"
 
-#: js/settings.js:906
+#: js/settings.js:848
 msgid "Connection test succeeded"
 msgstr "Επιτυχημένη δοκιμαστική σύνδεση"
 
-#: js/settings.js:913
+#: js/settings.js:855
 msgid "Connection test failed"
 msgstr "Αποτυχημένη δοκιμαστική σύνδεσης."
 
-#: js/settings.js:922
+#: js/settings.js:864
 msgid "Do you really want to delete the current Server Configuration?"
 msgstr "Θέλετε να διαγράψετε τις τρέχουσες ρυθμίσεις του διακομιστή;"
 
-#: js/settings.js:923
+#: js/settings.js:865
 msgid "Confirm Deletion"
 msgstr "Επιβεβαίωση Διαγραφής"
 
-#: lib/wizard.php:79 lib/wizard.php:93
+#: lib/wizard.php:83 lib/wizard.php:97
 #, php-format
 msgid "%s group found"
 msgid_plural "%s groups found"
 msgstr[0] "%s ομάδα βρέθηκε"
 msgstr[1] "%s ομάδες βρέθηκαν"
 
-#: lib/wizard.php:122
+#: lib/wizard.php:130
 #, php-format
 msgid "%s user found"
 msgid_plural "%s users found"
 msgstr[0] "%s χρήστης βρέθηκε"
 msgstr[1] "%s χρήστες βρέθηκαν"
 
-#: lib/wizard.php:784 lib/wizard.php:796
+#: lib/wizard.php:825 lib/wizard.php:837
 msgid "Invalid Host"
 msgstr "Άκυρος εξυπηρετητής"
 
-#: lib/wizard.php:963
+#: lib/wizard.php:1025
 msgid "Could not find the desired feature"
 msgstr "Αδυναμία εύρεσης επιθυμητου χαρακτηριστικού"
+
+#: settings.php:52
+msgid "Server"
+msgstr "Διακομιστής"
+
+#: settings.php:53
+msgid "User Filter"
+msgstr "Φίλτρο χρηστών"
+
+#: settings.php:54
+msgid "Login Filter"
+msgstr ""
+
+#: settings.php:55
+msgid "Group Filter"
+msgstr "Group Filter"
 
 #: templates/part.settingcontrols.php:2
 msgid "Save"
@@ -223,9 +255,22 @@ msgid ""
 "username in the login action. Example: \"uid=%%uid\""
 msgstr "Ορίζει το φίλτρο που θα εφαρμοστεί, όταν επιχειριθεί σύνδεση. Το %%uid αντικαθιστά το όνομα χρήστη κατά τη σύνδεση. Παράδειγμα: \"uid=%%uid\""
 
+#: templates/part.wizard-server.php:6
+msgid "1. Server"
+msgstr "1. Διακομιστής"
+
+#: templates/part.wizard-server.php:13
+#, php-format
+msgid "%s. Server:"
+msgstr ""
+
 #: templates/part.wizard-server.php:18
 msgid "Add Server Configuration"
 msgstr "Προσθήκη Ρυθμίσεων Διακομιστή"
+
+#: templates/part.wizard-server.php:21
+msgid "Delete Configuration"
+msgstr "Απαλοιφή ρυθμίσεων"
 
 #: templates/part.wizard-server.php:30
 msgid "Host"
@@ -290,6 +335,14 @@ msgstr "Επιστροφή"
 msgid "Continue"
 msgstr "Συνέχεια"
 
+#: templates/settings.php:7
+msgid "Expert"
+msgstr ""
+
+#: templates/settings.php:8
+msgid "Advanced"
+msgstr "Για προχωρημένους"
+
 #: templates/settings.php:11
 msgid ""
 "<b>Warning:</b> Apps user_ldap and user_webdavauth are incompatible. You may"
@@ -338,8 +391,8 @@ msgid "Only connect to the replica server."
 msgstr "Σύνδεση μόνο με το διακομιστή-αντίγραφο."
 
 #: templates/settings.php:26
-msgid "Case insensitve LDAP server (Windows)"
-msgstr "LDAP server (Windows) με διάκριση πεζών-ΚΕΦΑΛΑΙΩΝ"
+msgid "Case insensitive LDAP server (Windows)"
+msgstr "Διακομιστής LDAP με διάκριση πεζών-κεφαλαίων (Windows)"
 
 #: templates/settings.php:27
 msgid "Turn off SSL certificate validation."
@@ -420,18 +473,18 @@ msgstr "Φωλιασμένες ομάδες"
 msgid ""
 "When switched on, groups that contain groups are supported. (Only works if "
 "the group member attribute contains DNs.)"
-msgstr ""
+msgstr "Όταν ενεργοποιηθεί, οι ομάδες που περιέχουν ομάδες υποστηρίζονται. (Λειτουργεί μόνο αν το χαρακτηριστικό μέλους ομάδες περιέχει Διακεκριμένα Ονόματα.)"
 
 #: templates/settings.php:40
 msgid "Paging chunksize"
-msgstr ""
+msgstr "Μέγεθος σελιδοποίησης"
 
 #: templates/settings.php:40
 msgid ""
 "Chunksize used for paged LDAP searches that may return bulky results like "
 "user or group enumeration. (Setting it 0 disables paged LDAP searches in "
 "those situations.)"
-msgstr ""
+msgstr "Μέγεθος τμήματος που χρησιμοποιείται για την σελιδοποίηση αναζητήσεων LDAP που μπορεί να επιστρέψουν πολλά δεδομένα, όπως απαρίθμηση χρηστών ή ομάδων. (Η τιμή 0 απενεργοποιεί την σελιδοποίηση των αναζητήσεων LDAP σε αυτές τις περιπτώσεις.)"
 
 #: templates/settings.php:42
 msgid "Special Attributes"

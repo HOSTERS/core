@@ -10,6 +10,7 @@ namespace OCP\Route;
 interface IRoute {
 	/**
 	 * Specify PATCH as the method to use with this route
+	 * @return \OCP\Route\IRoute
 	 */
 	public function patch();
 
@@ -25,22 +26,26 @@ interface IRoute {
 	 * The action to execute when this route matches, includes a file like
 	 * it is called directly
 	 *
-	 * @param $file
+	 * @param string $file
+	 * @return void
 	 */
 	public function actionInclude($file);
 
 	/**
 	 * Specify GET as the method to use with this route
+	 * @return \OCP\Route\IRoute
 	 */
 	public function get();
 
 	/**
 	 * Specify POST as the method to use with this route
+	 * @return \OCP\Route\IRoute
 	 */
 	public function post();
 
 	/**
 	 * Specify DELETE as the method to use with this route
+	 * @return \OCP\Route\IRoute
 	 */
 	public function delete();
 
@@ -74,6 +79,7 @@ interface IRoute {
 
 	/**
 	 * Specify PUT as the method to use with this route
+	 * @return \OCP\Route\IRoute
 	 */
 	public function put();
 }

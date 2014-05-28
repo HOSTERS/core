@@ -13,13 +13,12 @@ $TRANSLATIONS = array(
 "Share" => "බෙදා හදා ගන්න",
 "Rename" => "නැවත නම් කරන්න",
 "Error" => "දෝෂයක්",
-"_%n folder_::_%n folders_" => array("",""),
-"_%n file_::_%n files_" => array("",""),
-"_Uploading %n file_::_Uploading %n files_" => array("",""),
 "Name" => "නම",
 "Size" => "ප්‍රමාණය",
 "Modified" => "වෙනස් කළ",
-"Upload" => "උඩුගත කරන්න",
+"_%n folder_::_%n folders_" => array("",""),
+"_%n file_::_%n files_" => array("",""),
+"_Uploading %n file_::_Uploading %n files_" => array("",""),
 "File handling" => "ගොනු පරිහරණය",
 "Maximum upload size" => "උඩුගත කිරීමක උපරිම ප්‍රමාණය",
 "max. possible: " => "හැකි උපරිමය:",
@@ -38,7 +37,6 @@ $TRANSLATIONS = array(
 "Delete" => "මකා දමන්න",
 "Upload too large" => "උඩුගත කිරීම විශාල වැඩිය",
 "The files you are trying to upload exceed the maximum size for file uploads on this server." => "ඔබ උඩුගත කිරීමට තැත් කරන ගොනු මෙම සේවාදායකයා උඩුගත කිරීමට ඉඩදී ඇති උපරිම ගොනු විශාලත්වයට වඩා වැඩිය",
-"Files are being scanned, please wait." => "ගොනු පරික්ෂා කෙරේ. මඳක් රැඳී සිටින්න",
-"Current scanning" => "වර්තමාන පරික්ෂාව"
+"Files are being scanned, please wait." => "ගොනු පරික්ෂා කෙරේ. මඳක් රැඳී සිටින්න"
 );
 $PLURAL_FORMS = "nplurals=2; plural=(n != 1);";

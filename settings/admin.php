@@ -10,11 +10,12 @@ OC_Util::checkAdminUser();
 OC_TemplateLayout::addStyle( "settings", "settings" );
 OC_TemplateLayout::addScript( "settings", "admin" );
 OC_TemplateLayout::addScript( "settings", "log" );
+OC_TemplateLayout::addScript( 'core', 'multiselect' );
 OC_App::setActiveNavigationEntry( "admin" );
 
 $tmpl = new OC_Template( 'settings', 'admin', 'user');
 $forms=OC_App::getForms('admin');
-$htaccessworking=OC_Util::isHtAccessWorking();
+$htaccessworking=OC_Util::isHtaccessWorking();
 
 $entries=OC_Log_Owncloud::getEntries(3);
 $entriesremain = count(OC_Log_Owncloud::getEntries(4)) > 3;
@@ -45,6 +46,27 @@ $tmpl->assign('backgroundjobs_mode', OC_Appconfig::getValue('core', 'backgroundj
 $tmpl->assign('cron_log', OC_Config::getValue('cron_log', true));
 $tmpl->assign('lastcron', OC_Appconfig::getValue('core', 'lastcron', false));
 $tmpl->assign('shareAPIEnabled', OC_Appconfig::getValue('core', 'shareapi_enabled', 'yes'));
+$tmpl->assign('shareDefaultExpireDateSet', OC_Appconfig::getValue('core', 'shareapi_default_expire_date', 'no'));
+$tmpl->assign('shareExpireAfterNDays', OC_Appconfig::getValue('core', 'shareapi_expire_after_n_days', '7'));
+$tmpl->assign('shareEnforceExpireDate', OC_Appconfig::getValue('core', 'shareapi_enforce_expire_date', 'no'));
+$excludeGroups = OC_Appconfig::getValue('core', 'shareapi_exclude_groups', 'no') === 'yes' ? true : false;
+$tmpl->assign('shareExcludeGroups', $excludeGroups);
+$allGroups =  OC_Group::getGroups();
+$excludedGroupsList = OC_Appconfig::getValue('core', 'shareapi_exclude_groups_list', '');
+$excludedGroups = $excludedGroupsList !== '' ? explode(',', $excludedGroupsList) : array();
+$groups = array();
+foreach ($allGroups as $group) {
+	if (in_array($group, $excludedGroups)) {
+		$groups[$group] = array('gid' => $group,
+			'excluded' => true);
+	} else {
+		$groups[$group] = array('gid' => $group,
+			'excluded' => false);
+	}
+}
+ksort($groups);
+$tmpl->assign('groups', $groups);
+
 
 // Check if connected using HTTPS
 if (OC_Request::serverProtocol() === 'https') {
@@ -56,6 +78,7 @@ $tmpl->assign('isConnectedViaHTTPS', $connectedHTTPS);
 $tmpl->assign('enforceHTTPSEnabled', OC_Config::getValue( "forcessl", false));
 
 $tmpl->assign('allowLinks', OC_Appconfig::getValue('core', 'shareapi_allow_links', 'yes'));
+$tmpl->assign('enforceLinkPassword', \OCP\Util::isPublicLinkPasswordRequired());
 $tmpl->assign('allowPublicUpload', OC_Appconfig::getValue('core', 'shareapi_allow_public_upload', 'yes'));
 $tmpl->assign('allowResharing', OC_Appconfig::getValue('core', 'shareapi_allow_resharing', 'yes'));
 $tmpl->assign('allowMailNotification', OC_Appconfig::getValue('core', 'shareapi_allow_mail_notification', 'yes'));

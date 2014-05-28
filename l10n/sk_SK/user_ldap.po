@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-04-08 01:56-0400\n"
-"PO-Revision-Date: 2014-04-08 05:56+0000\n"
+"POT-Creation-Date: 2014-05-28 01:54-0400\n"
+"PO-Revision-Date: 2014-05-28 05:54+0000\n"
 "Last-Translator: I Robot\n"
 "Language-Team: Slovak (Slovakia) (http://www.transifex.com/projects/p/owncloud/language/sk_SK/)\n"
 "MIME-Version: 1.0\n"
@@ -72,6 +72,10 @@ msgstr "Prebrať nastavenia z nedávneho nastavenia servera?"
 msgid "Keep settings?"
 msgstr "Ponechať nastavenia?"
 
+#: js/settings.js:93
+msgid "{nbServer}. Server"
+msgstr ""
+
 #: js/settings.js:99
 msgid "Cannot add server configuration"
 msgstr "Nemožno pridať nastavenie servera"
@@ -88,47 +92,59 @@ msgstr "Úspešné"
 msgid "Error"
 msgstr "Chyba"
 
-#: js/settings.js:838
+#: js/settings.js:244
+msgid "Please specify a Base DN"
+msgstr ""
+
+#: js/settings.js:245
+msgid "Could not determine Base DN"
+msgstr ""
+
+#: js/settings.js:276
+msgid "Please specify the port"
+msgstr ""
+
+#: js/settings.js:780
 msgid "Configuration OK"
 msgstr "Konfigurácia je v poriadku"
 
-#: js/settings.js:847
+#: js/settings.js:789
 msgid "Configuration incorrect"
 msgstr "Nesprávna konfigurácia"
 
-#: js/settings.js:856
+#: js/settings.js:798
 msgid "Configuration incomplete"
 msgstr "Nekompletná konfigurácia"
 
-#: js/settings.js:873 js/settings.js:882
+#: js/settings.js:815 js/settings.js:824
 msgid "Select groups"
 msgstr "Vybrať skupinu"
 
-#: js/settings.js:876 js/settings.js:885
+#: js/settings.js:818 js/settings.js:827
 msgid "Select object classes"
 msgstr "Vyberte triedy objektov"
 
-#: js/settings.js:879
+#: js/settings.js:821
 msgid "Select attributes"
 msgstr "Vyberte atribúty"
 
-#: js/settings.js:906
+#: js/settings.js:848
 msgid "Connection test succeeded"
 msgstr "Test pripojenia bol úspešný"
 
-#: js/settings.js:913
+#: js/settings.js:855
 msgid "Connection test failed"
 msgstr "Test pripojenia zlyhal"
 
-#: js/settings.js:922
+#: js/settings.js:864
 msgid "Do you really want to delete the current Server Configuration?"
 msgstr "Naozaj chcete zmazať súčasné nastavenie servera?"
 
-#: js/settings.js:923
+#: js/settings.js:865
 msgid "Confirm Deletion"
 msgstr "Potvrdiť vymazanie"
 
-#: lib/wizard.php:79 lib/wizard.php:93
+#: lib/wizard.php:83 lib/wizard.php:97
 #, php-format
 msgid "%s group found"
 msgid_plural "%s groups found"
@@ -136,7 +152,7 @@ msgstr[0] "%s nájdená skupina"
 msgstr[1] "%s nájdené skupiny"
 msgstr[2] "%s nájdených skupín"
 
-#: lib/wizard.php:122
+#: lib/wizard.php:130
 #, php-format
 msgid "%s user found"
 msgid_plural "%s users found"
@@ -144,13 +160,29 @@ msgstr[0] "%s nájdený používateľ"
 msgstr[1] "%s nájdení používatelia"
 msgstr[2] "%s nájdených používateľov"
 
-#: lib/wizard.php:784 lib/wizard.php:796
+#: lib/wizard.php:825 lib/wizard.php:837
 msgid "Invalid Host"
 msgstr "Neplatný hostiteľ"
 
-#: lib/wizard.php:963
+#: lib/wizard.php:1025
 msgid "Could not find the desired feature"
 msgstr "Nemožno nájsť požadovanú funkciu"
+
+#: settings.php:52
+msgid "Server"
+msgstr ""
+
+#: settings.php:53
+msgid "User Filter"
+msgstr ""
+
+#: settings.php:54
+msgid "Login Filter"
+msgstr ""
+
+#: settings.php:55
+msgid "Group Filter"
+msgstr "Filter skupiny"
 
 #: templates/part.settingcontrols.php:2
 msgid "Save"
@@ -167,7 +199,7 @@ msgstr "Pomoc"
 #: templates/part.wizard-groupfilter.php:4
 #, php-format
 msgid "Groups meeting these criteria are available in %s:"
-msgstr ""
+msgstr "Skupiny spĺňajúce tieto kritériá sú k dispozícii v %s:"
 
 #: templates/part.wizard-groupfilter.php:8
 #: templates/part.wizard-userfilter.php:8
@@ -203,7 +235,7 @@ msgstr "nájdené skupiny"
 
 #: templates/part.wizard-loginfilter.php:4
 msgid "Users login with this attribute:"
-msgstr ""
+msgstr "Používateľov prihlásiť pomocou tohto atribútu:"
 
 #: templates/part.wizard-loginfilter.php:8
 msgid "LDAP Username:"
@@ -224,9 +256,22 @@ msgid ""
 "username in the login action. Example: \"uid=%%uid\""
 msgstr "Určuje použitý filter, pri pokuse o prihlásenie. %%uid nahrádza používateľské meno v činnosti prihlásenia. Napríklad: \"uid=%%uid\""
 
+#: templates/part.wizard-server.php:6
+msgid "1. Server"
+msgstr ""
+
+#: templates/part.wizard-server.php:13
+#, php-format
+msgid "%s. Server:"
+msgstr ""
+
 #: templates/part.wizard-server.php:18
 msgid "Add Server Configuration"
 msgstr "Pridať nastavenia servera."
+
+#: templates/part.wizard-server.php:21
+msgid "Delete Configuration"
+msgstr ""
 
 #: templates/part.wizard-server.php:30
 msgid "Host"
@@ -271,7 +316,7 @@ msgstr "V rozšírenom nastavení môžete zadať základné DN pre používate�
 #: templates/part.wizard-userfilter.php:4
 #, php-format
 msgid "Limit %s access to users meeting these criteria:"
-msgstr ""
+msgstr "Obmedziť %s prístup na používateľov spĺňajúcich tieto kritériá:"
 
 #: templates/part.wizard-userfilter.php:31
 #, php-format
@@ -290,6 +335,14 @@ msgstr "Späť"
 #: templates/part.wizardcontrols.php:8
 msgid "Continue"
 msgstr "Pokračovať"
+
+#: templates/settings.php:7
+msgid "Expert"
+msgstr ""
+
+#: templates/settings.php:8
+msgid "Advanced"
+msgstr "Rozšírené"
 
 #: templates/settings.php:11
 msgid ""
@@ -339,8 +392,8 @@ msgid "Only connect to the replica server."
 msgstr "Pripojiť sa len k záložnému serveru."
 
 #: templates/settings.php:26
-msgid "Case insensitve LDAP server (Windows)"
-msgstr "LDAP server nerozlišuje veľkosť znakov (Windows)"
+msgid "Case insensitive LDAP server (Windows)"
+msgstr "LDAP server je citlivý na veľkosť písmen (Windows)"
 
 #: templates/settings.php:27
 msgid "Turn off SSL certificate validation."
@@ -415,13 +468,13 @@ msgstr "Priradenie člena skupiny"
 
 #: templates/settings.php:39
 msgid "Nested Groups"
-msgstr ""
+msgstr "Vnorené skupiny"
 
 #: templates/settings.php:39
 msgid ""
 "When switched on, groups that contain groups are supported. (Only works if "
 "the group member attribute contains DNs.)"
-msgstr ""
+msgstr "Ak je zapnuté, tak je možné používať skupiny, ktoré obsahujú iné skupiny. (Funguje, len ak atribút člena skupiny obsahuje DN.)"
 
 #: templates/settings.php:40
 msgid "Paging chunksize"

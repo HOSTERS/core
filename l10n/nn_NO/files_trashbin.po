@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-03-15 02:13-0400\n"
-"PO-Revision-Date: 2014-03-15 05:40+0000\n"
+"POT-Creation-Date: 2014-05-17 01:54-0400\n"
+"PO-Revision-Date: 2014-05-17 05:54+0000\n"
 "Last-Translator: I Robot\n"
 "Language-Team: Norwegian Nynorsk (Norway) (http://www.transifex.com/projects/p/owncloud/language/nn_NO/)\n"
 "MIME-Version: 1.0\n"
@@ -29,15 +29,19 @@ msgstr "Klarte ikkje sletta %s for godt"
 msgid "Couldn't restore %s"
 msgstr "Klarte ikkje gjenoppretta %s"
 
-#: js/filelist.js:23
+#: appinfo/app.php:13 js/filelist.js:34
 msgid "Deleted files"
 msgstr "Sletta filer"
 
-#: js/trash.js:16 js/trash.js:103 js/trash.js:152
+#: js/app.js:53 templates/index.php:21 templates/index.php:23
+msgid "Restore"
+msgstr "Gjenopprett"
+
+#: js/filelist.js:119 js/filelist.js:164 js/filelist.js:214
 msgid "Error"
 msgstr "Feil"
 
-#: lib/trashbin.php:853 lib/trashbin.php:855
+#: lib/trashbin.php:861 lib/trashbin.php:863
 msgid "restored"
 msgstr "gjenoppretta"
 
@@ -45,22 +49,14 @@ msgstr "gjenoppretta"
 msgid "Nothing in here. Your trash bin is empty!"
 msgstr "Ingenting her. Papirkorga di er tom!"
 
-#: templates/index.php:20
+#: templates/index.php:18
 msgid "Name"
 msgstr "Namn"
 
-#: templates/index.php:23 templates/index.php:25
-msgid "Restore"
-msgstr "Gjenopprett"
-
-#: templates/index.php:31
+#: templates/index.php:29
 msgid "Deleted"
 msgstr "Sletta"
 
-#: templates/index.php:34 templates/index.php:35
+#: templates/index.php:32 templates/index.php:33
 msgid "Delete"
 msgstr "Slett"
-
-#: templates/part.breadcrumb.php:8
-msgid "Deleted Files"
-msgstr "Sletta filer"

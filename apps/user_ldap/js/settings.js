@@ -14,7 +14,7 @@ var LdapConfiguration = {
 
 						//deal with Checkboxes
 						if($(elementID).is('input[type=checkbox]')) {
-							if(parseInt(configvalue) === 1) {
+							if(parseInt(configvalue, 10) === 1) {
 								$(elementID).attr('checked', 'checked');
 							} else {
 								$(elementID).removeAttr('checked');
@@ -90,7 +90,7 @@ var LdapConfiguration = {
 						);
 					}
 					$('#ldap_serverconfig_chooser option:selected').removeAttr('selected');
-					var html = '<option value="'+result.configPrefix+'" selected="selected">'+$('#ldap_serverconfig_chooser option').length+'. Server</option>';
+					var html = '<option value="'+result.configPrefix+'" selected="selected">'+t('user_ldap','{nbServer}. Server', {nbServer: $('#ldap_serverconfig_chooser option').length})+'</option>';
 					$('#ldap_serverconfig_chooser option:last').before(html);
 					LdapWizard.init();
 				} else {
@@ -145,6 +145,9 @@ var LdapWizard = {
 	spinner: '<img class="wizSpinner" src="'+ OC.imagePath('core', 'loading.gif') +'">',
 	filterModeAssisted: 0,
 	filterModeRaw: 1,
+	userFilter: false,
+	loginFilter: false,
+	groupFilter: false,
 
 	ajax: function(param, fnOnSuccess, fnOnError) {
 		$.post(
@@ -238,8 +241,8 @@ var LdapWizard = {
 				},
 				function (result) {
 					LdapWizard.hideSpinner('#ldap_base');
-					LdapWizard.showInfoBox('Please specify a Base DN');
-					LdapWizard.showInfoBox('Could not determine Base DN');
+					LdapWizard.showInfoBox(t('user_ldap', 'Please specify a Base DN'));
+					LdapWizard.showInfoBox(t('user_ldap', 'Could not determine Base DN'));
 					$('#ldap_base').prop('disabled', false);
 				}
 			);
@@ -270,45 +273,10 @@ var LdapWizard = {
 				function (result) {
 					LdapWizard.hideSpinner('#ldap_port');
 					$('#ldap_port').prop('disabled', false);
-					LdapWizard.showInfoBox('Please specify the port');
+					LdapWizard.showInfoBox(t('user_ldap', 'Please specify the port'));
 				}
 			);
 		}
-	},
-
-	composeFilter: function(type) {
-		subject = type.charAt(0).toUpperCase() + type.substr(1);
-		if(!$('#raw'+subject+'FilterContainer').hasClass('invisible')) {
-			//Raw filter editing, i.e. user defined filter, don't compose
-			return;
-		}
-
-		if(type == 'user') {
-			action = 'getUserListFilter';
-		} else if(type == 'login') {
-			action = 'getUserLoginFilter';
-		} else if(type == 'group') {
-			action = 'getGroupFilter';
-		}
-
-		param = 'action='+action+
-				'&ldap_serverconfig_chooser='+
-				encodeURIComponent($('#ldap_serverconfig_chooser').val());
-
-		LdapWizard.ajax(param,
-			function(result) {
-				LdapWizard.applyChanges(result);
-				if(type == 'user') {
-					LdapWizard.countUsers();
-				} else if(type == 'group') {
-					LdapWizard.countGroups();
-					LdapWizard.detectGroupMemberAssoc();
-				}
-			},
-			function (result) {
-				// error handling
-			}
-		);
 	},
 
 	controlBack: function() {
@@ -510,7 +478,7 @@ var LdapWizard = {
 	},
 
 	functionalityCheck: function() {
-		//criterias to enable the connection:
+		//criteria to enable the connection:
 		// - host, port, basedn, user filter, login filter
 		host        = $('#ldap_host').val();
 		port        = $('#ldap_port').val();
@@ -560,7 +528,7 @@ var LdapWizard = {
 	},
 
 	initGroupFilter: function() {
-		LdapWizard.regardFilterMode('Group');
+		LdapWizard.groupFilter = new LdapFilter('Group');
 		LdapWizard.findObjectClasses('ldap_groupfilter_objectclass', 'Group');
 		LdapWizard.findAvailableGroups('ldap_groupfilter_groups', 'Groups');
 		LdapWizard.countGroups();
@@ -569,13 +537,13 @@ var LdapWizard = {
 	/** init login filter tab section **/
 
 	initLoginFilter: function() {
-		LdapWizard.regardFilterMode('Login');
+		LdapWizard.loginFilter = new LdapFilter('Login');
 		LdapWizard.findAttributes();
 	},
 
 	postInitLoginFilter: function() {
 		if($('#rawLoginFilterContainer').hasClass('invisible')) {
-			LdapWizard.composeFilter('login');
+			LdapWizard.loginFilter.compose();
 		}
 	},
 
@@ -588,7 +556,7 @@ var LdapWizard = {
 			noneSelectedText: caption,
 			click: function(event, ui) {
 				LdapWizard.saveMultiSelect(id,
-										   $('#'+id).multiselect("getChecked"));
+										$('#'+id).multiselect("getChecked"));
 			}
 		});
 	},
@@ -601,15 +569,15 @@ var LdapWizard = {
 	initUserFilter: function() {
 		LdapWizard.userFilterObjectClassesHasRun = false;
 		LdapWizard.userFilterAvailableGroupsHasRun = false;
-		LdapWizard.regardFilterMode('User');
+		LdapWizard.userFilter = new LdapFilter('User');
 		LdapWizard.findObjectClasses('ldap_userfilter_objectclass', 'User');
 		LdapWizard.findAvailableGroups('ldap_userfilter_groups', 'Users');
 	},
 
 	postInitUserFilter: function() {
-		if(LdapWizard.userFilterObjectClassesHasRun
-		   && LdapWizard.userFilterAvailableGroupsHasRun) {
-			LdapWizard.composeFilter('user');
+		if(LdapWizard.userFilterObjectClassesHasRun &&
+			LdapWizard.userFilterAvailableGroupsHasRun) {
+			LdapWizard.userFilter.compose();
 			LdapWizard.countUsers();
 		}
 	},
@@ -658,39 +626,13 @@ var LdapWizard = {
 
 		if(triggerObj.id == 'ldap_loginfilter_username'
 		   || triggerObj.id == 'ldap_loginfilter_email') {
-			LdapWizard.composeFilter('login');
+			LdapWizard.loginFilter.compose();
 		}
 
 		if($('#ldapSettings').tabs('option', 'active') == 0) {
 			LdapWizard.basicStatusCheck();
 			LdapWizard.functionalityCheck();
 		}
-	},
-
-	regardFilterMode: function(subject) {
-		param = 'action=get'+encodeURIComponent(subject)+'FilterMode'+
-				'&ldap_serverconfig_chooser='+
-				encodeURIComponent($('#ldap_serverconfig_chooser').val());
-
-		LdapWizard.ajax(param,
-			function(result) {
-				property = 'ldap' + subject + 'FilterMode';
-				mode = result.changes[property];
-				if(mode == LdapWizard.filterModeRaw
-					&& $('#raw'+subject+'FilterContainer').hasClass('invisible')) {
-					LdapWizard['toggleRaw'+subject+'Filter']();
-				} else if(mode == LdapWizard.filterModeAssisted
-					&& !$('#raw'+subject+'FilterContainer').hasClass('invisible')) {
-					LdapWizard['toggleRaw'+subject+'Filter']();
-				}
-			},
-			function (result) {
-				//on error case get back to default i.e. Assisted
-				if(!$('#raw'+subject+'FilterContainer').hasClass('invisible')) {
-					LdapWizard['toggleRaw'+subject+'Filter']();
-				}
-			}
-		);
 	},
 
 	save: function(inputObj) {
@@ -714,15 +656,15 @@ var LdapWizard = {
 		LdapWizard._save($('#'+originalObj)[0], $.trim(values));
 		if(originalObj == 'ldap_userfilter_objectclass'
 		   || originalObj == 'ldap_userfilter_groups') {
-			LdapWizard.composeFilter('user');
+			LdapWizard.userFilter.compose();
 			//when user filter is changed afterwards, login filter needs to
 			//be adjusted, too
-			LdapWizard.composeFilter('login');
+			LdapWizard.loginFilter.compose();
 		} else if(originalObj == 'ldap_loginfilter_attributes') {
-			LdapWizard.composeFilter('login');
+			LdapWizard.loginFilter.compose();
 		} else if(originalObj == 'ldap_groupfilter_objectclass'
 		   || originalObj == 'ldap_groupfilter_groups') {
-			LdapWizard.composeFilter('group');
+			LdapWizard.groupFilter.compose();
 		}
 	},
 
@@ -746,7 +688,7 @@ var LdapWizard = {
 	},
 
 	showInfoBox: function(text) {
-		$('#ldapWizard1 .ldapWizardInfo').text(t('user_ldap', text));
+		$('#ldapWizard1 .ldapWizardInfo').text(text);
 		$('#ldapWizard1 .ldapWizardInfo').removeClass('invisible');
 		LdapWizard.checkInfoShown = true;
 	},
@@ -778,10 +720,10 @@ var LdapWizard = {
 			LdapWizard._save({ id: modeKey }, LdapWizard.filterModeAssisted);
 			if(moc.indexOf('user') >= 0) {
 				LdapWizard.blacklistRemove('ldap_userlist_filter');
-				LdapWizard.composeFilter('user');
+				LdapWizard.userFilter.compose();
 			} else {
 				LdapWizard.blacklistRemove('ldap_group_filter');
-				LdapWizard.composeFilter('group');
+				LdapWizard.groupFilter.compose();
 			}
 		}
 	},
@@ -815,7 +757,7 @@ var LdapWizard = {
 		$('#ldap_loginfilter_username').prop('disabled', property);
 		LdapWizard._save({ id: 'ldapLoginFilterMode' }, mode);
 		if(action == 'enable') {
-			LdapWizard.composeFilter('login');
+			LdapWizard.loginFilter.compose();
 		}
 	},
 

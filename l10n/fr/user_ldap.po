@@ -5,13 +5,15 @@
 # Translators:
 # Christophe Lherieau <skimpax@gmail.com>, 2013-2014
 # etiess <etiess@gmail.com>, 2013
+# Gauth <gauthier@openux.org>, 2014
 # plachance <patlachance@gmail.com>, 2013
+# RyDroid <rydroid_trans@yahoo.fr>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-04-08 01:56-0400\n"
-"PO-Revision-Date: 2014-04-08 05:56+0000\n"
+"POT-Creation-Date: 2014-05-28 01:54-0400\n"
+"PO-Revision-Date: 2014-05-28 05:54+0000\n"
 "Last-Translator: I Robot\n"
 "Language-Team: French (http://www.transifex.com/projects/p/owncloud/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -73,6 +75,10 @@ msgstr "Récupérer les paramètres depuis une configuration récente du serveur
 msgid "Keep settings?"
 msgstr "Garder ces paramètres ?"
 
+#: js/settings.js:93
+msgid "{nbServer}. Server"
+msgstr "{nbServer}. Serveur"
+
 #: js/settings.js:99
 msgid "Cannot add server configuration"
 msgstr "Impossible d'ajouter la configuration du serveur"
@@ -89,67 +95,95 @@ msgstr "Succès"
 msgid "Error"
 msgstr "Erreur"
 
-#: js/settings.js:838
+#: js/settings.js:244
+msgid "Please specify a Base DN"
+msgstr ""
+
+#: js/settings.js:245
+msgid "Could not determine Base DN"
+msgstr ""
+
+#: js/settings.js:276
+msgid "Please specify the port"
+msgstr ""
+
+#: js/settings.js:780
 msgid "Configuration OK"
 msgstr "Configuration OK"
 
-#: js/settings.js:847
+#: js/settings.js:789
 msgid "Configuration incorrect"
 msgstr "Configuration incorrecte"
 
-#: js/settings.js:856
+#: js/settings.js:798
 msgid "Configuration incomplete"
 msgstr "Configuration incomplète"
 
-#: js/settings.js:873 js/settings.js:882
+#: js/settings.js:815 js/settings.js:824
 msgid "Select groups"
 msgstr "Sélectionnez les groupes"
 
-#: js/settings.js:876 js/settings.js:885
+#: js/settings.js:818 js/settings.js:827
 msgid "Select object classes"
 msgstr "Sélectionner les classes d'objet"
 
-#: js/settings.js:879
+#: js/settings.js:821
 msgid "Select attributes"
 msgstr "Sélectionner les attributs"
 
-#: js/settings.js:906
+#: js/settings.js:848
 msgid "Connection test succeeded"
 msgstr "Test de connexion réussi"
 
-#: js/settings.js:913
+#: js/settings.js:855
 msgid "Connection test failed"
 msgstr "Test de connexion échoué"
 
-#: js/settings.js:922
+#: js/settings.js:864
 msgid "Do you really want to delete the current Server Configuration?"
 msgstr "Êtes-vous vraiment sûr de vouloir effacer la configuration actuelle du serveur ?"
 
-#: js/settings.js:923
+#: js/settings.js:865
 msgid "Confirm Deletion"
 msgstr "Confirmer la suppression"
 
-#: lib/wizard.php:79 lib/wizard.php:93
+#: lib/wizard.php:83 lib/wizard.php:97
 #, php-format
 msgid "%s group found"
 msgid_plural "%s groups found"
 msgstr[0] "%s groupe trouvé"
 msgstr[1] "%s groupes trouvés"
 
-#: lib/wizard.php:122
+#: lib/wizard.php:130
 #, php-format
 msgid "%s user found"
 msgid_plural "%s users found"
 msgstr[0] "%s utilisateur trouvé"
 msgstr[1] "%s utilisateurs trouvés"
 
-#: lib/wizard.php:784 lib/wizard.php:796
+#: lib/wizard.php:825 lib/wizard.php:837
 msgid "Invalid Host"
 msgstr "Hôte invalide"
 
-#: lib/wizard.php:963
+#: lib/wizard.php:1025
 msgid "Could not find the desired feature"
 msgstr "Impossible de trouver la fonction souhaitée"
+
+#: settings.php:52
+msgid "Server"
+msgstr "Serveur"
+
+#: settings.php:53
+msgid "User Filter"
+msgstr "Filtre utilisateur"
+
+#: settings.php:54
+msgid "Login Filter"
+msgstr "Filtre par nom d'utilisateur"
+
+#: settings.php:55
+msgid "Group Filter"
+msgstr "Filtre de groupes"
 
 #: templates/part.settingcontrols.php:2
 msgid "Save"
@@ -223,9 +257,22 @@ msgid ""
 "username in the login action. Example: \"uid=%%uid\""
 msgstr "Définit le filtre à appliquer lors d'une tentative de connexion. %%uid remplace le nom d'utilisateur lors de la connexion. Exemple : \"uid=%%uid\""
 
+#: templates/part.wizard-server.php:6
+msgid "1. Server"
+msgstr "1. Serveur"
+
+#: templates/part.wizard-server.php:13
+#, php-format
+msgid "%s. Server:"
+msgstr "%s. Serveur:"
+
 #: templates/part.wizard-server.php:18
 msgid "Add Server Configuration"
 msgstr "Ajouter une configuration du serveur"
+
+#: templates/part.wizard-server.php:21
+msgid "Delete Configuration"
+msgstr "Suppression de la configuration"
 
 #: templates/part.wizard-server.php:30
 msgid "Host"
@@ -290,6 +337,14 @@ msgstr "Retour"
 msgid "Continue"
 msgstr "Poursuivre"
 
+#: templates/settings.php:7
+msgid "Expert"
+msgstr "Expert"
+
+#: templates/settings.php:8
+msgid "Advanced"
+msgstr "Avancé"
+
 #: templates/settings.php:11
 msgid ""
 "<b>Warning:</b> Apps user_ldap and user_webdavauth are incompatible. You may"
@@ -338,7 +393,7 @@ msgid "Only connect to the replica server."
 msgstr "Se connecter uniquement au serveur de replica."
 
 #: templates/settings.php:26
-msgid "Case insensitve LDAP server (Windows)"
+msgid "Case insensitive LDAP server (Windows)"
 msgstr "Serveur LDAP insensible à la casse (Windows)"
 
 #: templates/settings.php:27
@@ -424,14 +479,14 @@ msgstr "Si activé, les groupes contenant d'autres groupes sont supportés (fonc
 
 #: templates/settings.php:40
 msgid "Paging chunksize"
-msgstr ""
+msgstr "Dimensionnement des paginations"
 
 #: templates/settings.php:40
 msgid ""
 "Chunksize used for paged LDAP searches that may return bulky results like "
 "user or group enumeration. (Setting it 0 disables paged LDAP searches in "
 "those situations.)"
-msgstr ""
+msgstr "La taille d'une part (chunksize) est utilisée pour les recherches paginées de LDAP qui peuvent retourner des résultats par lots comme une énumération d'utilisateurs ou groupes. (Configurer à 0 pour désactiver les recherches paginées de LDAP.)"
 
 #: templates/settings.php:42
 msgid "Special Attributes"

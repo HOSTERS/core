@@ -3,12 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Mariano <mstreet@kde.org.ar>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-03-26 01:55-0400\n"
-"PO-Revision-Date: 2014-03-26 05:55+0000\n"
+"POT-Creation-Date: 2014-05-28 01:54-0400\n"
+"PO-Revision-Date: 2014-05-28 05:54+0000\n"
 "Last-Translator: I Robot\n"
 "Language-Team: Esperanto (http://www.transifex.com/projects/p/owncloud/language/eo/)\n"
 "MIME-Version: 1.0\n"
@@ -24,7 +25,7 @@ msgstr ""
 
 #: admin/controller.php:73
 msgid "Saved"
-msgstr ""
+msgstr "Konservita"
 
 #: admin/controller.php:90
 msgid "test email settings"
@@ -47,34 +48,34 @@ msgstr "La retpoŝtaĵo sendiĝis"
 msgid "You need to set your user email before being able to send test emails."
 msgstr ""
 
-#: admin/controller.php:116 templates/admin.php:299
+#: admin/controller.php:116 templates/admin.php:331
 msgid "Send mode"
-msgstr ""
+msgstr "Sendi pli"
 
-#: admin/controller.php:118 templates/admin.php:312 templates/personal.php:159
+#: admin/controller.php:118 templates/admin.php:344 templates/personal.php:144
 msgid "Encryption"
 msgstr "Ĉifrado"
 
-#: admin/controller.php:120 templates/admin.php:336
+#: admin/controller.php:120 templates/admin.php:368
 msgid "Authentication method"
-msgstr ""
+msgstr "Aŭtentiga metodo"
 
 #: ajax/apps/ocs.php:20
 msgid "Unable to load list from App Store"
 msgstr "Ne eblis ŝargi liston el aplikaĵovendejo"
 
 #: ajax/changedisplayname.php:25 ajax/removeuser.php:15 ajax/setquota.php:17
-#: ajax/togglegroups.php:20 changepassword/controller.php:55
+#: ajax/togglegroups.php:20 changepassword/controller.php:49
 msgid "Authentication error"
 msgstr "Aŭtentiga eraro"
 
 #: ajax/changedisplayname.php:31
 msgid "Your full name has been changed."
-msgstr ""
+msgstr "Via plena nomo ŝanĝitas."
 
 #: ajax/changedisplayname.php:34
 msgid "Unable to change full name"
-msgstr ""
+msgstr "Ne eblis ŝanĝi la plenan nomon"
 
 #: ajax/creategroup.php:10
 msgid "Group already exists"
@@ -83,6 +84,30 @@ msgstr "La grupo jam ekzistas"
 #: ajax/creategroup.php:19
 msgid "Unable to add group"
 msgstr "Ne eblis aldoni la grupon"
+
+#: ajax/decryptall.php:31
+msgid "Files decrypted successfully"
+msgstr "La dosieroj malĉifriĝis sukcese"
+
+#: ajax/decryptall.php:33
+msgid ""
+"Couldn't decrypt your files, please check your owncloud.log or ask your "
+"administrator"
+msgstr ""
+
+#: ajax/decryptall.php:36
+msgid "Couldn't decrypt your files, check your password and try again"
+msgstr ""
+
+#: ajax/deletekeys.php:14
+msgid "Encryption keys deleted permanently"
+msgstr "La ĉifroklavojn foriĝis por ĉiam."
+
+#: ajax/deletekeys.php:16
+msgid ""
+"Couldn't permanently delete your encryption keys, please check your "
+"owncloud.log or ask your administrator"
+msgstr ""
 
 #: ajax/lostpassword.php:12
 msgid "Email saved"
@@ -99,6 +124,16 @@ msgstr "Ne eblis forigi la grupon"
 #: ajax/removeuser.php:25
 msgid "Unable to delete user"
 msgstr "Ne eblis forigi la uzanton"
+
+#: ajax/restorekeys.php:14
+msgid "Backups restored successfully"
+msgstr "La savokopioj restaŭriĝis sukcese"
+
+#: ajax/restorekeys.php:23
+msgid ""
+"Couldn't restore your encryption keys, please check your owncloud.log or ask"
+" your administrator"
+msgstr ""
 
 #: ajax/setlanguage.php:15
 msgid "Language changed"
@@ -124,40 +159,40 @@ msgstr "Ne eblis forigi la uzantan el la grupo %s"
 
 #: ajax/updateapp.php:14
 msgid "Couldn't update app."
-msgstr ""
+msgstr "Ne eblis ĝisdatigi la aplikaĵon."
 
-#: changepassword/controller.php:20
+#: changepassword/controller.php:17
 msgid "Wrong password"
-msgstr ""
+msgstr "Malĝusta pasvorto"
 
-#: changepassword/controller.php:42
+#: changepassword/controller.php:36
 msgid "No user supplied"
 msgstr ""
 
-#: changepassword/controller.php:74
+#: changepassword/controller.php:68
 msgid ""
 "Please provide an admin recovery password, otherwise all user data will be "
 "lost"
 msgstr ""
 
-#: changepassword/controller.php:79
+#: changepassword/controller.php:73
 msgid ""
 "Wrong admin recovery password. Please check the password and try again."
 msgstr ""
 
-#: changepassword/controller.php:87
+#: changepassword/controller.php:81
 msgid ""
 "Back-end doesn't support password change, but the users encryption key was "
 "successfully updated."
 msgstr ""
 
-#: changepassword/controller.php:92 changepassword/controller.php:103
+#: changepassword/controller.php:86 changepassword/controller.php:97
 msgid "Unable to change password"
-msgstr ""
+msgstr "Ne eblis ŝanĝi la pasvorton"
 
-#: js/admin.js:73
+#: js/admin.js:126
 msgid "Sending..."
-msgstr ""
+msgstr "Sendante..."
 
 #: js/apps.js:45 templates/help.php:4
 msgid "User Documentation"
@@ -165,11 +200,11 @@ msgstr "Dokumentaro por uzantoj"
 
 #: js/apps.js:50
 msgid "Admin Documentation"
-msgstr ""
+msgstr "Administra dokumentaro"
 
 #: js/apps.js:67
 msgid "Update to {appversion}"
-msgstr ""
+msgstr "Ĝisdatigi al {appversion}"
 
 #: js/apps.js:73 js/apps.js:106 js/apps.js:134
 msgid "Disable"
@@ -181,7 +216,7 @@ msgstr "Kapabligi"
 
 #: js/apps.js:95
 msgid "Please wait...."
-msgstr ""
+msgstr "Bonvolu atendi..."
 
 #: js/apps.js:103 js/apps.js:104 js/apps.js:125
 msgid "Error while disabling app"
@@ -193,51 +228,59 @@ msgstr ""
 
 #: js/apps.js:149
 msgid "Updating...."
-msgstr ""
+msgstr "Ĝisdatigata..."
 
 #: js/apps.js:152
 msgid "Error while updating app"
-msgstr ""
+msgstr "Eraris ĝisdatigo de la aplikaĵo"
 
 #: js/apps.js:152
 msgid "Error"
 msgstr "Eraro"
 
-#: js/apps.js:153 templates/apps.php:54
+#: js/apps.js:153 templates/apps.php:55
 msgid "Update"
 msgstr "Ĝisdatigi"
 
 #: js/apps.js:156
 msgid "Updated"
-msgstr ""
+msgstr "Ĝisdatigita"
 
-#: js/personal.js:246
+#: js/personal.js:256
 msgid "Select a profile picture"
-msgstr ""
+msgstr "Elekti profilan bildon"
 
-#: js/personal.js:277
+#: js/personal.js:287
 msgid "Very weak password"
-msgstr ""
+msgstr "Tre malforta pasvorto"
 
-#: js/personal.js:278
+#: js/personal.js:288
 msgid "Weak password"
-msgstr ""
+msgstr "Malforta pasvorto"
 
-#: js/personal.js:279
+#: js/personal.js:289
 msgid "So-so password"
-msgstr ""
+msgstr "Mezaĉa pasvorto"
 
-#: js/personal.js:280
+#: js/personal.js:290
 msgid "Good password"
-msgstr ""
+msgstr "Bona pasvorto"
 
-#: js/personal.js:281
+#: js/personal.js:291
 msgid "Strong password"
-msgstr ""
+msgstr "Forta pasvorto"
 
-#: js/personal.js:316
+#: js/personal.js:310
 msgid "Decrypting files... Please wait, this can take some time."
 msgstr ""
+
+#: js/personal.js:324
+msgid "Delete encryption keys permanently."
+msgstr "Forigi ĉifroklavojn por ĉiam."
+
+#: js/personal.js:338
+msgid "Restore encryption keys."
+msgstr "Restaŭri ĉifroklavojn."
 
 #: js/users.js:47
 msgid "deleted"
@@ -249,10 +292,10 @@ msgstr "malfari"
 
 #: js/users.js:79
 msgid "Unable to remove user"
-msgstr ""
+msgstr "Ne eblis forigi la uzanton"
 
-#: js/users.js:101 templates/users.php:24 templates/users.php:88
-#: templates/users.php:116
+#: js/users.js:101 templates/admin.php:280 templates/users.php:24
+#: templates/users.php:88 templates/users.php:116
 msgid "Groups"
 msgstr "Grupoj"
 
@@ -266,25 +309,25 @@ msgstr "Forigi"
 
 #: js/users.js:310
 msgid "add group"
-msgstr ""
+msgstr "aldoni grupon"
 
 #: js/users.js:486
 msgid "A valid username must be provided"
-msgstr ""
+msgstr "Valida uzantonomo devas proviziĝi"
 
 #: js/users.js:487 js/users.js:493 js/users.js:508
 msgid "Error creating user"
-msgstr ""
+msgstr "Eraris kreo de uzanto"
 
 #: js/users.js:492
 msgid "A valid password must be provided"
-msgstr ""
+msgstr "Valida pasvorto devas proviziĝi"
 
 #: js/users.js:516
 msgid "Warning: Home directory for user \"{user}\" already exists"
 msgstr ""
 
-#: personal.php:49 personal.php:50
+#: personal.php:50 personal.php:51
 msgid "__language_name__"
 msgstr "Esperanto"
 
@@ -326,11 +369,11 @@ msgstr ""
 
 #: templates/admin.php:24
 msgid "SSL"
-msgstr ""
+msgstr "SSL"
 
 #: templates/admin.php:25
 msgid "TLS"
-msgstr ""
+msgstr "TLS"
 
 #: templates/admin.php:47 templates/admin.php:61
 msgid "Security Warning"
@@ -369,7 +412,7 @@ msgstr ""
 
 #: templates/admin.php:90
 msgid "Module 'fileinfo' missing"
-msgstr ""
+msgstr "La modulo «fileinfo» mankas"
 
 #: templates/admin.php:93
 msgid ""
@@ -390,7 +433,7 @@ msgstr ""
 
 #: templates/admin.php:118
 msgid "Locale not working"
-msgstr ""
+msgstr "La lokaĵaro ne funkcias"
 
 #: templates/admin.php:123
 msgid "System locale can not be set to a one which supports UTF-8."
@@ -472,128 +515,156 @@ msgstr "Kapabligi aplikaĵojn uzi la API-on pri Kunhavigo"
 msgid "Allow links"
 msgstr "Kapabligi ligilojn"
 
-#: templates/admin.php:220
-msgid "Allow users to share items to the public with links"
-msgstr "Kapabligi uzantojn kunhavigi erojn kun la publiko perligile"
-
-#: templates/admin.php:227
-msgid "Allow public uploads"
+#: templates/admin.php:223
+msgid "Enforce password protection"
 msgstr ""
 
-#: templates/admin.php:228
-msgid ""
-"Allow users to enable others to upload into their publicly shared folders"
+#: templates/admin.php:226
+msgid "Allow public uploads"
+msgstr "Permesi publikajn alŝutojn"
+
+#: templates/admin.php:230
+msgid "Set default expiration date"
+msgstr ""
+
+#: templates/admin.php:232
+msgid "Expire after "
 msgstr ""
 
 #: templates/admin.php:235
+msgid "days"
+msgstr "tagoj"
+
+#: templates/admin.php:238
+msgid "Enforce expiration date"
+msgstr ""
+
+#: templates/admin.php:242
+msgid "Allow users to share items to the public with links"
+msgstr "Kapabligi uzantojn kunhavigi erojn kun la publiko perligile"
+
+#: templates/admin.php:249
 msgid "Allow resharing"
 msgstr "Kapabligi rekunhavigon"
 
-#: templates/admin.php:236
+#: templates/admin.php:250
 msgid "Allow users to share items shared with them again"
 msgstr "Kapabligi uzantojn rekunhavigi erojn kunhavigitajn kun ili"
 
-#: templates/admin.php:243
+#: templates/admin.php:257
 msgid "Allow users to share with anyone"
 msgstr "Kapabligi uzantojn kunhavigi kun ĉiu ajn"
 
-#: templates/admin.php:246
+#: templates/admin.php:260
 msgid "Allow users to only share with users in their groups"
 msgstr "Kapabligi uzantojn nur kunhavigi kun uzantoj el siaj grupoj"
 
-#: templates/admin.php:253
+#: templates/admin.php:267
 msgid "Allow mail notification"
+msgstr "Permesi retpoŝtan sciigon"
+
+#: templates/admin.php:268
+msgid "Allow users to send mail notification for shared files"
 msgstr ""
 
-#: templates/admin.php:254
-msgid "Allow user to send mail notification for shared files"
+#: templates/admin.php:275
+msgid "Exclude groups from sharing"
 msgstr ""
 
-#: templates/admin.php:261
+#: templates/admin.php:286
+msgid ""
+"These groups will still be able to receive shares, but not to initiate them."
+msgstr ""
+
+#: templates/admin.php:293
 msgid "Security"
-msgstr ""
+msgstr "Sekuro"
 
-#: templates/admin.php:274
+#: templates/admin.php:306
 msgid "Enforce HTTPS"
 msgstr ""
 
-#: templates/admin.php:276
+#: templates/admin.php:308
 #, php-format
 msgid "Forces the clients to connect to %s via an encrypted connection."
 msgstr ""
 
-#: templates/admin.php:282
+#: templates/admin.php:314
 #, php-format
 msgid ""
 "Please connect to your %s via HTTPS to enable or disable the SSL "
 "enforcement."
 msgstr ""
 
-#: templates/admin.php:294
+#: templates/admin.php:326
 msgid "Email Server"
-msgstr ""
+msgstr "Retpoŝtoservilo"
 
-#: templates/admin.php:296
+#: templates/admin.php:328
 msgid "This is used for sending out notifications."
 msgstr ""
 
-#: templates/admin.php:327
+#: templates/admin.php:359
 msgid "From address"
+msgstr "El adreso"
+
+#: templates/admin.php:360
+msgid "mail"
 msgstr ""
 
-#: templates/admin.php:349
+#: templates/admin.php:381
 msgid "Authentication required"
-msgstr ""
+msgstr "Aŭtentiĝo nepras"
 
-#: templates/admin.php:353
+#: templates/admin.php:385
 msgid "Server address"
 msgstr "Servila adreso"
 
-#: templates/admin.php:357
+#: templates/admin.php:389
 msgid "Port"
 msgstr "Pordo"
 
-#: templates/admin.php:362
+#: templates/admin.php:394
 msgid "Credentials"
 msgstr "Aŭtentigiloj"
 
-#: templates/admin.php:363
+#: templates/admin.php:395
 msgid "SMTP Username"
-msgstr ""
+msgstr "SMTP-uzantonomo"
 
-#: templates/admin.php:366
+#: templates/admin.php:398
 msgid "SMTP Password"
-msgstr ""
+msgstr "SMTP-pasvorto"
 
-#: templates/admin.php:370
+#: templates/admin.php:402
 msgid "Test email settings"
 msgstr ""
 
-#: templates/admin.php:371
+#: templates/admin.php:403
 msgid "Send email"
-msgstr ""
+msgstr "Sendi retpoŝton"
 
-#: templates/admin.php:376
+#: templates/admin.php:408
 msgid "Log"
 msgstr "Protokolo"
 
-#: templates/admin.php:377
+#: templates/admin.php:409
 msgid "Log level"
 msgstr "Registronivelo"
 
-#: templates/admin.php:409
+#: templates/admin.php:441
 msgid "More"
 msgstr "Pli"
 
-#: templates/admin.php:410
+#: templates/admin.php:442
 msgid "Less"
 msgstr "Malpli"
 
-#: templates/admin.php:416 templates/personal.php:181
+#: templates/admin.php:448 templates/personal.php:196
 msgid "Version"
 msgstr "Eldono"
 
-#: templates/admin.php:420 templates/personal.php:184
+#: templates/admin.php:452 templates/personal.php:199
 msgid ""
 "Developed by the <a href=\"http://ownCloud.org/contact\" "
 "target=\"_blank\">ownCloud community</a>, the <a "
@@ -611,23 +682,23 @@ msgstr "Aldonu vian aplikaĵon"
 msgid "More Apps"
 msgstr "Pli da aplikaĵoj"
 
-#: templates/apps.php:37
+#: templates/apps.php:38
 msgid "Select an App"
 msgstr "Elekti aplikaĵon"
 
-#: templates/apps.php:42
+#: templates/apps.php:43
 msgid "Documentation:"
-msgstr ""
+msgstr "Dokumentaro:"
 
-#: templates/apps.php:48
+#: templates/apps.php:49
 msgid "See application page at apps.owncloud.com"
 msgstr "Vidu la paĝon pri aplikaĵoj ĉe apps.owncloud.com"
 
-#: templates/apps.php:50
+#: templates/apps.php:51
 msgid "See application website"
-msgstr ""
+msgstr "Vidi la TTT-ejon de la aplikaĵo"
 
-#: templates/apps.php:52
+#: templates/apps.php:53
 msgid "<span class=\"licence\"></span>-licensed by <span class=\"author\"></span>"
 msgstr "<span class=\"licence\"</span>-permesilhavigita de <span class=\"author\"></span>"
 
@@ -662,112 +733,116 @@ msgstr ""
 #: templates/personal.php:27
 #, php-format
 msgid "You have used <strong>%s</strong> of the available <strong>%s</strong>"
-msgstr "Vi uzas <strong>%s</strong> el la haveblaj <strong>%s</strong>"
+msgstr "Vi uzas <strong>%s</strong> el la disponeblaj <strong>%s</strong>"
 
-#: templates/personal.php:39 templates/users.php:21 templates/users.php:87
+#: templates/personal.php:38 templates/users.php:21 templates/users.php:87
 msgid "Password"
 msgstr "Pasvorto"
 
-#: templates/personal.php:40
+#: templates/personal.php:39
 msgid "Your password was changed"
 msgstr "Via pasvorto ŝanĝiĝis"
 
-#: templates/personal.php:41
+#: templates/personal.php:40
 msgid "Unable to change your password"
 msgstr "Ne eblis ŝanĝi vian pasvorton"
 
-#: templates/personal.php:43
+#: templates/personal.php:42
 msgid "Current password"
 msgstr "Nuna pasvorto"
 
-#: templates/personal.php:46
+#: templates/personal.php:45
 msgid "New password"
 msgstr "Nova pasvorto"
 
-#: templates/personal.php:50
+#: templates/personal.php:49
 msgid "Change password"
 msgstr "Ŝanĝi la pasvorton"
 
-#: templates/personal.php:64 templates/users.php:86
+#: templates/personal.php:61 templates/users.php:86
 msgid "Full Name"
-msgstr ""
+msgstr "Plena nomo"
 
-#: templates/personal.php:81
+#: templates/personal.php:76
 msgid "Email"
 msgstr "Retpoŝto"
 
-#: templates/personal.php:83
+#: templates/personal.php:78
 msgid "Your email address"
 msgstr "Via retpoŝta adreso"
 
-#: templates/personal.php:86
+#: templates/personal.php:81
 msgid ""
 "Fill in an email address to enable password recovery and receive "
 "notifications"
 msgstr ""
 
-#: templates/personal.php:96
+#: templates/personal.php:89
 msgid "Profile picture"
 msgstr "Profila bildo"
 
-#: templates/personal.php:101
+#: templates/personal.php:94
 msgid "Upload new"
-msgstr ""
+msgstr "Alŝuti novan"
 
-#: templates/personal.php:103
+#: templates/personal.php:96
 msgid "Select new from Files"
-msgstr ""
+msgstr "Elekti novan el dosieroj"
 
-#: templates/personal.php:104
+#: templates/personal.php:97
 msgid "Remove image"
-msgstr ""
+msgstr "Forigi bildon"
 
-#: templates/personal.php:105
+#: templates/personal.php:98
 msgid "Either png or jpg. Ideally square but you will be able to crop it."
 msgstr ""
 
-#: templates/personal.php:107
+#: templates/personal.php:100
 msgid "Your avatar is provided by your original account."
 msgstr ""
 
-#: templates/personal.php:111
+#: templates/personal.php:104
 msgid "Cancel"
 msgstr "Nuligi"
 
-#: templates/personal.php:112
+#: templates/personal.php:105
 msgid "Choose as profile image"
-msgstr ""
+msgstr "Elekti kiel profilan bildon"
 
-#: templates/personal.php:120 templates/personal.php:121
+#: templates/personal.php:111 templates/personal.php:112
 msgid "Language"
 msgstr "Lingvo"
 
-#: templates/personal.php:140
+#: templates/personal.php:131
 msgid "Help translate"
 msgstr "Helpu traduki"
 
-#: templates/personal.php:147
-msgid "WebDAV"
-msgstr "WebDAV"
-
-#: templates/personal.php:149
-#, php-format
-msgid ""
-"Use this address to <a href=\"%s\" target=\"_blank\">access your Files via "
-"WebDAV</a>"
-msgstr ""
-
-#: templates/personal.php:161
+#: templates/personal.php:150
 msgid "The encryption app is no longer enabled, please decrypt all your files"
 msgstr ""
 
-#: templates/personal.php:167
+#: templates/personal.php:156
 msgid "Log-in password"
-msgstr ""
+msgstr "Ensaluta pasvorto"
 
-#: templates/personal.php:172
+#: templates/personal.php:161
 msgid "Decrypt all Files"
-msgstr ""
+msgstr "Malĉifri ĉiujn dosierojn"
+
+#: templates/personal.php:174
+msgid ""
+"Your encryption keys are moved to a backup location. If something went wrong"
+" you can restore the keys. Only delete them permanently if you are sure that"
+" all files are decrypted correctly."
+msgstr "Viaj ĉifroklavoj moviĝis al savokopia loko. Se io malsukcesas, vi povas restaŭri la klavojn. Nur forigu ilin porĉiame se vi certas, ke ĉiuj dosieroj malĉifriĝis korekte."
+
+#: templates/personal.php:178
+msgid "Restore Encryption Keys"
+msgstr "Restaŭri ĉifroklavojn"
+
+#: templates/personal.php:182
+msgid "Delete Encryption Keys"
+msgstr "Forigi ĉifroklavojn"
 
 #: templates/users.php:19
 msgid "Login Name"
@@ -813,11 +888,11 @@ msgstr "Konservejo"
 
 #: templates/users.php:106
 msgid "change full name"
-msgstr ""
+msgstr "ŝanĝi plenan nomon"
 
 #: templates/users.php:110
 msgid "set new password"
-msgstr ""
+msgstr "agordi novan pasvorton"
 
 #: templates/users.php:141
 msgid "Default"

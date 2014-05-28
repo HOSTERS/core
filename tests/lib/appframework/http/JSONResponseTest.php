@@ -5,8 +5,8 @@
  *
  * @author Bernhard Posselt
  * @author Morris Jobke
- * @copyright 2012 Bernhard Posselt nukeawhale@gmail.com
- * @copyright 2013 Morris Jobke morris.jobke@gmail.com
+ * @copyright 2012 Bernhard Posselt <dev@bernhard-posselt.com>
+ * @copyright 2013 Morris Jobke <morris.jobke@gmail.com>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU AFFERO GENERAL PUBLIC LICENSE
@@ -78,13 +78,6 @@ class JSONResponseTest extends \PHPUnit_Framework_TestCase {
 
 		$this->assertEquals($expected, $this->json->render());
 	}
-
-
-	public function testShouldHaveXContentHeaderByDefault() {
-		$headers = $this->json->getHeaders();
-		$this->assertEquals('nosniff', $headers['X-Content-Type-Options']);
-	}
-
 
 	public function testConstructorAllowsToSetData() {
 		$data = array('hi');

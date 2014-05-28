@@ -30,16 +30,22 @@ class Shared_Permissions extends Permissions {
 	 * @return int (-1 if file no permissions set)
 	 */
 	public function get($fileId, $user) {
+
 		if ($fileId == -1) {
-			return \OCP\PERMISSION_READ;
+			// if we ask for the mount point return -1 so that we can get the correct
+			// permissions by the path, with the root fileId we have no idea which share is meant
+			return -1;
 		}
 		$source = \OCP\Share::getItemSharedWithBySource('file', $fileId, \OC_Share_Backend_File::FORMAT_SHARED_STORAGE,
 			null, true);
+
+		$permission = -1;
+
 		if ($source) {
-			return $source['permissions'];
-		} else {
-			return -1;
+			$permission = $this->updatePermissions($source['permissions']);
 		}
+
+		return $permission;
 	}
 
 	/**
@@ -53,7 +59,7 @@ class Shared_Permissions extends Permissions {
 		$source = \OCP\Share::getItemSharedWithBySource('file', $fileId, \OC_Share_Backend_File::FORMAT_SHARED_STORAGE,
 			null, false);
 		if ($source) {
-			return $source['permissions'];
+			return $this->updatePermissions($source['permissions']);
 		} else {
 			return -1;
 		}
@@ -104,7 +110,7 @@ class Shared_Permissions extends Permissions {
 		$result = $query->execute(array($parentId));
 		$filePermissions = array();
 		while ($row = $result->fetchRow()) {
-			$filePermissions[$row['fileid']] = $permissions;
+			$filePermissions[$row['fileid']] = $this->updatePermissions($permissions);
 		}
 		return $filePermissions;
 	}

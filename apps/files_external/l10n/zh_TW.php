@@ -1,10 +1,18 @@
 <?php
 $TRANSLATIONS = array(
+"Local" => "本地",
+"Location" => "地點",
+"Host" => "主機",
+"Username" => "使用者名稱：",
+"Password" => "密碼",
+"Share" => "分享",
+"URL" => "URL",
 "Access granted" => "允許存取",
 "Error configuring Dropbox storage" => "設定 Dropbox 儲存時發生錯誤",
 "Grant access" => "允許存取",
 "Please provide a valid Dropbox app key and secret." => "請提供有效的 Dropbox app key 和 app secret 。",
 "Error configuring Google Drive storage" => "設定 Google Drive 儲存時發生錯誤",
+"Saved" => "已儲存",
 "External Storage" => "外部儲存",
 "Folder name" => "資料夾名稱",
 "External storage" => "外部儲存",

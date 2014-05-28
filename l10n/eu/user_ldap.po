@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-04-08 01:56-0400\n"
-"PO-Revision-Date: 2014-04-08 05:56+0000\n"
+"POT-Creation-Date: 2014-05-28 01:54-0400\n"
+"PO-Revision-Date: 2014-05-28 05:54+0000\n"
 "Last-Translator: I Robot\n"
 "Language-Team: Basque (http://www.transifex.com/projects/p/owncloud/language/eu/)\n"
 "MIME-Version: 1.0\n"
@@ -71,6 +71,10 @@ msgstr "oraintsuko zerbitzariaren konfigurazioaren ezarpenen ardura hartu?"
 msgid "Keep settings?"
 msgstr "Mantendu ezarpenak?"
 
+#: js/settings.js:93
+msgid "{nbServer}. Server"
+msgstr ""
+
 #: js/settings.js:99
 msgid "Cannot add server configuration"
 msgstr "Ezin da zerbitzariaren konfigurazioa gehitu"
@@ -87,67 +91,95 @@ msgstr "Arrakasta"
 msgid "Error"
 msgstr "Errorea"
 
-#: js/settings.js:838
+#: js/settings.js:244
+msgid "Please specify a Base DN"
+msgstr ""
+
+#: js/settings.js:245
+msgid "Could not determine Base DN"
+msgstr ""
+
+#: js/settings.js:276
+msgid "Please specify the port"
+msgstr ""
+
+#: js/settings.js:780
 msgid "Configuration OK"
 msgstr "Konfigurazioa ongi dago"
 
-#: js/settings.js:847
+#: js/settings.js:789
 msgid "Configuration incorrect"
 msgstr "Konfigurazioa ez dago ongi"
 
-#: js/settings.js:856
+#: js/settings.js:798
 msgid "Configuration incomplete"
 msgstr "Konfigurazioa osatu gabe dago"
 
-#: js/settings.js:873 js/settings.js:882
+#: js/settings.js:815 js/settings.js:824
 msgid "Select groups"
 msgstr "Hautatu taldeak"
 
-#: js/settings.js:876 js/settings.js:885
+#: js/settings.js:818 js/settings.js:827
 msgid "Select object classes"
 msgstr "Hautatu objektu klaseak"
 
-#: js/settings.js:879
+#: js/settings.js:821
 msgid "Select attributes"
 msgstr "Hautatu atributuak"
 
-#: js/settings.js:906
+#: js/settings.js:848
 msgid "Connection test succeeded"
 msgstr "Konexio froga ongi burutu da"
 
-#: js/settings.js:913
+#: js/settings.js:855
 msgid "Connection test failed"
 msgstr "Konexio frogak huts egin du"
 
-#: js/settings.js:922
+#: js/settings.js:864
 msgid "Do you really want to delete the current Server Configuration?"
 msgstr "Ziur zaude Zerbitzariaren Konfigurazioa ezabatu nahi duzula?"
 
-#: js/settings.js:923
+#: js/settings.js:865
 msgid "Confirm Deletion"
 msgstr "Baieztatu Ezabatzea"
 
-#: lib/wizard.php:79 lib/wizard.php:93
+#: lib/wizard.php:83 lib/wizard.php:97
 #, php-format
 msgid "%s group found"
 msgid_plural "%s groups found"
 msgstr[0] "Talde %s aurkitu da"
 msgstr[1] "%s talde aurkitu dira"
 
-#: lib/wizard.php:122
+#: lib/wizard.php:130
 #, php-format
 msgid "%s user found"
 msgid_plural "%s users found"
 msgstr[0] "Erabiltzaile %s aurkitu da"
 msgstr[1] "%s erabiltzaile aurkitu dira"
 
-#: lib/wizard.php:784 lib/wizard.php:796
+#: lib/wizard.php:825 lib/wizard.php:837
 msgid "Invalid Host"
 msgstr "Baliogabeko hostalaria"
 
-#: lib/wizard.php:963
+#: lib/wizard.php:1025
 msgid "Could not find the desired feature"
 msgstr "Ezin izan da nahi zen ezaugarria aurkitu"
+
+#: settings.php:52
+msgid "Server"
+msgstr ""
+
+#: settings.php:53
+msgid "User Filter"
+msgstr ""
+
+#: settings.php:54
+msgid "Login Filter"
+msgstr ""
+
+#: settings.php:55
+msgid "Group Filter"
+msgstr "Taldeen iragazkia"
 
 #: templates/part.settingcontrols.php:2
 msgid "Save"
@@ -221,9 +253,22 @@ msgid ""
 "username in the login action. Example: \"uid=%%uid\""
 msgstr ""
 
+#: templates/part.wizard-server.php:6
+msgid "1. Server"
+msgstr ""
+
+#: templates/part.wizard-server.php:13
+#, php-format
+msgid "%s. Server:"
+msgstr ""
+
 #: templates/part.wizard-server.php:18
 msgid "Add Server Configuration"
 msgstr "Gehitu Zerbitzariaren Konfigurazioa"
+
+#: templates/part.wizard-server.php:21
+msgid "Delete Configuration"
+msgstr ""
 
 #: templates/part.wizard-server.php:30
 msgid "Host"
@@ -288,6 +333,14 @@ msgstr "Atzera"
 msgid "Continue"
 msgstr "Jarraitu"
 
+#: templates/settings.php:7
+msgid "Expert"
+msgstr ""
+
+#: templates/settings.php:8
+msgid "Advanced"
+msgstr "Aurreratua"
+
 #: templates/settings.php:11
 msgid ""
 "<b>Warning:</b> Apps user_ldap and user_webdavauth are incompatible. You may"
@@ -336,8 +389,8 @@ msgid "Only connect to the replica server."
 msgstr "Konektatu bakarrik erreplika zerbitzarira"
 
 #: templates/settings.php:26
-msgid "Case insensitve LDAP server (Windows)"
-msgstr "Maiuskulak eta minuskulak ezberditzen ez dituen LDAP zerbitzaria (windows)"
+msgid "Case insensitive LDAP server (Windows)"
+msgstr ""
 
 #: templates/settings.php:27
 msgid "Turn off SSL certificate validation."

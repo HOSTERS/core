@@ -24,9 +24,16 @@ class Manager {
 	}
 
 	/**
+	 * @param string $mountPoint
+	 */
+	public function removeMount($mountPoint) {
+		unset($this->mounts[$mountPoint]);
+	}
+
+	/**
 	 * Find the mount for $path
 	 *
-	 * @param $path
+	 * @param string $path
 	 * @return Mount
 	 */
 	public function find($path) {
@@ -54,7 +61,7 @@ class Manager {
 	/**
 	 * Find all mounts in $path
 	 *
-	 * @param $path
+	 * @param string $path
 	 * @return Mount[]
 	 */
 	public function findIn($path) {
@@ -105,7 +112,7 @@ class Manager {
 	/**
 	 * Find mounts by numeric storage id
 	 *
-	 * @param string $id
+	 * @param int $id
 	 * @return Mount[]
 	 */
 	public function findByNumericId($id) {

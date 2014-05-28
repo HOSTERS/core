@@ -7,19 +7,31 @@
 # Efstathios Iosifidis <iosifidis@opensuse.org>, 2013
 # pe_ppe <peppe@cs.uoi.gr>, 2014
 # vkehayas <vkehayas@gmail.com>, 2013-2014
+# Γιάννης Ανθυμίδης <yannanth@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-04-09 01:55-0400\n"
-"PO-Revision-Date: 2014-04-09 05:55+0000\n"
-"Last-Translator: I Robot\n"
+"POT-Creation-Date: 2014-05-28 01:54-0400\n"
+"PO-Revision-Date: 2014-05-27 13:52+0000\n"
+"Last-Translator: pe_ppe <peppe@cs.uoi.gr>\n"
 "Language-Team: Greek (http://www.transifex.com/projects/p/owncloud/language/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: base.php:695
+msgid "You are accessing the server from an untrusted domain."
+msgstr "Η προσπέλαση του διακομιστή γίνεται από μη έμπιστο τομέα."
+
+#: base.php:696
+msgid ""
+"Please contact your administrator. If you are an administrator of this "
+"instance, configure the \"trusted_domain\" setting in config/config.php. An "
+"example configuration is provided in config/config.sample.php."
+msgstr "Παρακαλώ επικοινωνήστε με τον διαχειριστή συστημάτων σας. Αν είστε διαχειριστής αυτού του στιγμιοτύπο, ρυθμίστε το κλειδί \"trusted_domain\" στο αρχείο config/config.php. Ένα παράδειγμα παρέχεται στο αρχείο config/config.sample.php."
 
 #: private/app.php:236
 #, php-format
@@ -50,9 +62,9 @@ msgstr "Χρήστες"
 
 #: private/app.php:402
 msgid "Admin"
-msgstr "Διαχειριστής"
+msgstr "Διαχείριση"
 
-#: private/app.php:875
+#: private/app.php:880
 #, php-format
 msgid "Failed to upgrade \"%s\"."
 msgstr "Αποτυχία αναβάθμισης του \"%s\"."
@@ -69,23 +81,23 @@ msgstr "Μη έγκυρη εικόνα"
 msgid "web services under your control"
 msgstr "υπηρεσίες δικτύου υπό τον έλεγχό σας"
 
-#: private/files.php:232
+#: private/files.php:235
 msgid "ZIP download is turned off."
 msgstr "Η λήψη ZIP απενεργοποιήθηκε."
 
-#: private/files.php:233
+#: private/files.php:236
 msgid "Files need to be downloaded one by one."
 msgstr "Τα αρχεία πρέπει να ληφθούν ένα-ένα."
 
-#: private/files.php:234 private/files.php:262
+#: private/files.php:237 private/files.php:264
 msgid "Back to Files"
 msgstr "Πίσω στα Αρχεία"
 
-#: private/files.php:259
+#: private/files.php:262
 msgid "Selected files too large to generate zip file."
 msgstr "Τα επιλεγμένα αρχεία είναι μεγάλα ώστε να δημιουργηθεί αρχείο zip."
 
-#: private/files.php:260
+#: private/files.php:263
 msgid ""
 "Please download the files separately in smaller chunks or kindly ask your "
 "administrator."
@@ -120,29 +132,29 @@ msgstr "Η εφαρμογή δεν παρέχει αρχείο info.xml"
 msgid "App can't be installed because of not allowed code in the App"
 msgstr "Η εφαρμογή δεν μπορεί να εγκατασταθεί λόγω μη-επιτρεπόμενου κώδικα μέσα στην Εφαρμογή"
 
-#: private/installer.php:141
+#: private/installer.php:138
 msgid ""
 "App can't be installed because it is not compatible with this version of "
 "ownCloud"
 msgstr "Η εφαρμογή δεν μπορεί να εγκατασταθεί επειδή δεν είναι συμβατή με αυτή την έκδοση ownCloud"
 
-#: private/installer.php:147
+#: private/installer.php:144
 msgid ""
 "App can't be installed because it contains the <shipped>true</shipped> tag "
 "which is not allowed for non shipped apps"
 msgstr "Η εφαρμογή δεν μπορεί να εγκατασταθεί επειδή περιέχει την ετικέτα <shipped>σωστή</shipped> που δεν επιτρέπεται για μη-ενσωματωμένες εφαρμογές"
 
-#: private/installer.php:160
+#: private/installer.php:157
 msgid ""
 "App can't be installed because the version in info.xml/version is not the "
 "same as the version reported from the app store"
 msgstr "Η εφαρμογή δεν μπορεί να εγκατασταθεί επειδή η έκδοση στο info.xml/version δεν είναι η ίδια με την έκδοση που αναφέρεται στο κατάστημα εφαρμογών"
 
-#: private/installer.php:170
+#: private/installer.php:167
 msgid "App directory already exists"
 msgstr "Ο κατάλογος εφαρμογών υπάρχει ήδη"
 
-#: private/installer.php:183
+#: private/installer.php:180
 #, php-format
 msgid "Can't create app folder. Please fix permissions. %s"
 msgstr "Δεν είναι δυνατόν να δημιουργηθεί ο φάκελος εφαρμογής. Παρακαλώ διορθώστε τις άδειες πρόσβασης. %s"
@@ -151,15 +163,15 @@ msgstr "Δεν είναι δυνατόν να δημιουργηθεί ο φάκ
 msgid "Application is not enabled"
 msgstr "Δεν ενεργοποιήθηκε η εφαρμογή"
 
-#: private/json.php:40 private/json.php:63 private/json.php:88
+#: private/json.php:40 private/json.php:62 private/json.php:87
 msgid "Authentication error"
 msgstr "Σφάλμα πιστοποίησης"
 
-#: private/json.php:52
+#: private/json.php:51
 msgid "Token expired. Please reload page."
 msgstr "Το αναγνωριστικό έληξε. Παρακαλώ φορτώστε ξανά την σελίδα."
 
-#: private/json.php:75
+#: private/json.php:74
 msgid "Unknown user"
 msgstr "Άγνωστος χρήστης"
 
@@ -271,90 +283,204 @@ msgstr "Εισάγετε όνομα χρήστη διαχειριστή."
 msgid "Set an admin password."
 msgstr "Εισάγετε συνθηματικό διαχειριστή."
 
-#: private/setup.php:202
+#: private/setup.php:164
 msgid ""
 "Your web server is not yet properly setup to allow files synchronization "
 "because the WebDAV interface seems to be broken."
 msgstr "Ο διακομιστής σας δεν έχει ρυθμιστεί κατάλληλα ώστε να επιτρέπει τον συγχρονισμό αρχείων γιατί η διεπαφή WebDAV πιθανόν να είναι κατεστραμμένη."
 
-#: private/setup.php:203
+#: private/setup.php:165
 #, php-format
 msgid "Please double check the <a href='%s'>installation guides</a>."
 msgstr "Ελέγξτε ξανά τις <a href='%s'>οδηγίες εγκατάστασης</a>."
 
-#: private/share/mailnotifications.php:72
-#: private/share/mailnotifications.php:118
+#: private/share/mailnotifications.php:91
+#: private/share/mailnotifications.php:137
 #, php-format
 msgid "%s shared »%s« with you"
 msgstr "Ο %s διαμοιράστηκε μαζί σας το »%s«"
 
-#: private/tags.php:193
+#: private/share/share.php:494
+#, php-format
+msgid "Sharing %s failed, because the file does not exist"
+msgstr "Ο διαμοιρασμός του %s απέτυχε, γιατί το αρχείο δεν υπάρχει"
+
+#: private/share/share.php:501
+#, php-format
+msgid "You are not allowed to share %s"
+msgstr "Δεν επιτρέπεται να διαμοιράσετε τον πόρο %s"
+
+#: private/share/share.php:526
+#, php-format
+msgid "Sharing %s failed, because the user %s is the item owner"
+msgstr "Ο διαμοιρασμός του %s απέτυχε, γιατί ο χρήστης %s είναι ο ιδιοκτήτης του αντικειμένου"
+
+#: private/share/share.php:532
+#, php-format
+msgid "Sharing %s failed, because the user %s does not exist"
+msgstr "Ο διαμοιρασμός του %s απέτυχε, γιατί ο χρήστης %s δεν υπάρχει"
+
+#: private/share/share.php:541
+#, php-format
+msgid ""
+"Sharing %s failed, because the user %s is not a member of any groups that %s"
+" is a member of"
+msgstr "Ο διαμοιρασμός του %s απέτυχε, γιατί ο χρήστης %s δεν είναι μέλος καμίας ομάδας στην οποία ο χρήστης %s είναι μέλος"
+
+#: private/share/share.php:554 private/share/share.php:582
+#, php-format
+msgid "Sharing %s failed, because this item is already shared with %s"
+msgstr "Ο διαμοιρασμός του %s απέτυχε, γιατί το αντικείμενο είναι διαμοιρασμένο ήδη με τον χρήστη %s"
+
+#: private/share/share.php:562
+#, php-format
+msgid "Sharing %s failed, because the group %s does not exist"
+msgstr "Ο διαμοιρασμός του %s απέτυχε, γιατί η ομάδα χρηστών %s δεν υπάρχει"
+
+#: private/share/share.php:569
+#, php-format
+msgid "Sharing %s failed, because %s is not a member of the group %s"
+msgstr "Ο διαμοιρασμός του %s απέτυχε, γιατί ο χρήστης %s δεν είναι μέλος της ομάδας %s"
+
+#: private/share/share.php:621
+msgid ""
+"You need to provide a password to create a public link, only protected links"
+" are allowed"
+msgstr "Πρέπει να εισάγετε έναν κωδικό για να δημιουργήσετε έναν δημόσιο σύνδεσμο. Μόνο προστατευμένοι σύνδεσμοι επιτρέπονται"
+
+#: private/share/share.php:641
+#, php-format
+msgid "Sharing %s failed, because sharing with links is not allowed"
+msgstr "Ο διαμοιρασμός του %s απέτυχε, γιατί δεν επιτρέπεται ο διαμοιρασμός με συνδέσμους"
+
+#: private/share/share.php:648
+#, php-format
+msgid "Share type %s is not valid for %s"
+msgstr "Ο τύπος διαμοιρασμού %s δεν είναι έγκυρος για το %s"
+
+#: private/share/share.php:787
+#, php-format
+msgid ""
+"Setting permissions for %s failed, because the permissions exceed "
+"permissions granted to %s"
+msgstr "Ο ορισμός δικαιωμάτων για το %s απέτυχε, γιατί τα δικαιώματα υπερτερούν αυτά που είναι ορισμένα για το %s"
+
+#: private/share/share.php:848
+#, php-format
+msgid "Setting permissions for %s failed, because the item was not found"
+msgstr "Ο ορισμός δικαιωμάτων για το %s απέτυχε, γιατί το αντικείμενο δεν βρέθηκε"
+
+#: private/share/share.php:959
+#, php-format
+msgid "Sharing backend %s must implement the interface OCP\\Share_Backend"
+msgstr "Το σύστημα διαμοιρασμού %s πρέπει να υλοποιεί την διεπαφή OCP\\Share_Backend"
+
+#: private/share/share.php:966
+#, php-format
+msgid "Sharing backend %s not found"
+msgstr "Το σύστημα διαμοιρασμού %s δεν βρέθηκε"
+
+#: private/share/share.php:972
+#, php-format
+msgid "Sharing backend for %s not found"
+msgstr "Το σύστημα διαμοιρασμού για το %s δεν βρέθηκε"
+
+#: private/share/share.php:1388
+#, php-format
+msgid "Sharing %s failed, because the user %s is the original sharer"
+msgstr "Ο διαμοιρασμός του %s απέτυχε, γιατί το αντικείμενο είναι διαμοιρασμένο αρχικά από τον χρήστη %s"
+
+#: private/share/share.php:1397
+#, php-format
+msgid ""
+"Sharing %s failed, because the permissions exceed permissions granted to %s"
+msgstr "Ο διαμοιρασμός του %s απέτυχε, γιατί τα δικαιώματα υπερτερούν αυτά που είναι ορισμένα για το %s"
+
+#: private/share/share.php:1413
+#, php-format
+msgid "Sharing %s failed, because resharing is not allowed"
+msgstr "Ο διαμοιρασμός του %s απέτυχε, γιατί δεν επιτρέπεται ο επαναδιαμοιρασμός"
+
+#: private/share/share.php:1425
+#, php-format
+msgid ""
+"Sharing %s failed, because the sharing backend for %s could not find its "
+"source"
+msgstr "Ο διαμοιρασμός του %s απέτυχε, γιατί δεν ήταν δυνατό να εντοπίσει την πηγή το σύστημα διαμοιρασμού για το %s "
+
+#: private/share/share.php:1439
+#, php-format
+msgid ""
+"Sharing %s failed, because the file could not be found in the file cache"
+msgstr "Ο διαμοιρασμός του %s απέτυχε, γιατί το αρχείο δεν βρέθηκε στην προσωρινή αποθήκευση αρχείων"
+
+#: private/tags.php:183
 #, php-format
 msgid "Could not find category \"%s\""
 msgstr "Αδυναμία εύρεσης κατηγορίας \"%s\""
 
-#: private/template/functions.php:133
+#: private/template/functions.php:134
 msgid "seconds ago"
 msgstr "δευτερόλεπτα πριν"
 
-#: private/template/functions.php:134
+#: private/template/functions.php:135
 msgid "%n minute ago"
 msgid_plural "%n minutes ago"
 msgstr[0] ""
 msgstr[1] "%n λεπτά πριν"
 
-#: private/template/functions.php:135
+#: private/template/functions.php:136
 msgid "%n hour ago"
 msgid_plural "%n hours ago"
 msgstr[0] ""
 msgstr[1] "%n ώρες πριν"
 
-#: private/template/functions.php:136
+#: private/template/functions.php:137
 msgid "today"
 msgstr "σήμερα"
 
-#: private/template/functions.php:137
+#: private/template/functions.php:138
 msgid "yesterday"
 msgstr "χτες"
 
-#: private/template/functions.php:139
+#: private/template/functions.php:140
 msgid "%n day go"
 msgid_plural "%n days ago"
 msgstr[0] ""
 msgstr[1] "%n ημέρες πριν"
 
-#: private/template/functions.php:141
+#: private/template/functions.php:142
 msgid "last month"
 msgstr "τελευταίο μήνα"
 
-#: private/template/functions.php:142
+#: private/template/functions.php:143
 msgid "%n month ago"
 msgid_plural "%n months ago"
 msgstr[0] ""
 msgstr[1] "%n μήνες πριν"
 
-#: private/template/functions.php:144
+#: private/template/functions.php:145
 msgid "last year"
 msgstr "τελευταίο χρόνο"
 
-#: private/template/functions.php:145
+#: private/template/functions.php:146
 msgid "years ago"
 msgstr "χρόνια πριν"
 
-#: private/user/manager.php:246
+#: private/user/manager.php:232
 msgid ""
 "Only the following characters are allowed in a username: \"a-z\", \"A-Z\", "
 "\"0-9\", and \"_.@-\""
-msgstr ""
+msgstr "Μόνο οι παρακάτων χαρακτήρες επιτρέπονται σε ένα όνομα χρήστη: \"a-z\", \"A-Z\", \"0-9\" και \"_.@-\""
 
-#: private/user/manager.php:251
+#: private/user/manager.php:237
 msgid "A valid username must be provided"
-msgstr ""
+msgstr "Πρέπει να δοθεί έγκυρο όνομα χρήστη"
 
-#: private/user/manager.php:255
+#: private/user/manager.php:241
 msgid "A valid password must be provided"
-msgstr ""
+msgstr "Πρέπει να δοθεί έγκυρο συνθηματικό"
 
-#: private/user/manager.php:260
+#: private/user/manager.php:246
 msgid "The username is already being used"
-msgstr ""
+msgstr "Το όνομα χρήστη είναι κατειλημμένο"

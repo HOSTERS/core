@@ -39,10 +39,10 @@ class GROUP_LDAP extends BackendUtility implements \OCP\GroupInterface {
 	}
 
 	/**
-	 * @brief is user in group?
-	 * @param $uid uid of the user
-	 * @param $gid gid of the group
-	 * @returns true/false
+	 * is user in group?
+	 * @param string $uid uid of the user
+	 * @param string $gid gid of the group
+	 * @return bool
 	 *
 	 * Checks whether the user is member of a group or not.
 	 */
@@ -88,6 +88,10 @@ class GROUP_LDAP extends BackendUtility implements \OCP\GroupInterface {
 		return $isInGroup;
 	}
 
+	/**
+	 * @param string $dnGroup
+	 * @param array|null &$seen
+	 */
 	private function _groupMembers($dnGroup, &$seen = null) {
 		if ($seen === null) {
 			$seen = array();
@@ -122,9 +126,9 @@ class GROUP_LDAP extends BackendUtility implements \OCP\GroupInterface {
 	}
 
 	/**
-	 * @brief Get all groups a user belongs to
-	 * @param $uid Name of the user
-	 * @returns array with group names
+	 * Get all groups a user belongs to
+	 * @param string $uid Name of the user
+	 * @return array with group names
 	 *
 	 * This function fetches all groups a user belongs to. It does not check
 	 * if the user exists at all.
@@ -163,14 +167,18 @@ class GROUP_LDAP extends BackendUtility implements \OCP\GroupInterface {
 		return $groups;
 	}
 
+	/**
+	 * @param string $dn
+	 * @param array|null &$seen
+	 */
 	private function getGroupsByMember($dn, &$seen = null) {
 		if ($seen === null) {
 			$seen = array();
 		}
 		$allGroups = array();
 		if (array_key_exists($dn, $seen)) {
-		    // avoid loops
-		    return array();
+			// avoid loops
+			return array();
 		}
 		$seen[$dn] = true;
 		$filter = $this->access->combineFilterWithAnd(array(
@@ -196,8 +204,8 @@ class GROUP_LDAP extends BackendUtility implements \OCP\GroupInterface {
 	}
 
 	/**
-	 * @brief get a list of all users in a group
-	 * @returns array with user ids
+	 * get a list of all users in a group
+	 * @return array with user ids
 	 */
 	public function usersInGroup($gid, $search = '', $limit = -1, $offset = 0) {
 		if(!$this->enabled) {
@@ -277,27 +285,86 @@ class GROUP_LDAP extends BackendUtility implements \OCP\GroupInterface {
 	}
 
 	/**
-	 * @brief get a list of all display names in a group
-	 * @returns array with display names (value) and user ids(key)
+	 * returns the number of users in a group, who match the search term
+	 * @param string $gid the internal group name
+	 * @param string $search optional, a search string
+	 * @return int|bool
 	 */
-	public function displayNamesInGroup($gid, $search, $limit, $offset) {
-		if(!$this->enabled) {
-			return array();
+	public function countUsersInGroup($gid, $search = '') {
+		$cachekey = 'countUsersInGroup-'.$gid.'-'.$search;
+		if(!$this->enabled || !$this->groupExists($gid)) {
+			return false;
 		}
-		if(!$this->groupExists($gid)) {
-			return array();
+		$groupUsers = $this->access->connection->getFromCache($cachekey);
+		if(!is_null($groupUsers)) {
+			return $groupUsers;
 		}
-		$users = $this->usersInGroup($gid, $search, $limit, $offset);
-		$displayNames = array();
-		foreach($users as $user) {
-			$displayNames[$user] = \OC_User::getDisplayName($user);
+
+		$groupDN = $this->access->groupname2dn($gid);
+		if(!$groupDN) {
+			// group couldn't be found, return empty resultset
+			$this->access->connection->writeToCache($cachekey, false);
+			return false;
 		}
-		return $displayNames;
+
+		$members = array_keys($this->_groupMembers($groupDN));
+		if(!$members) {
+			//in case users could not be retrieved, return empty resultset
+			$this->access->connection->writeToCache($cachekey, false);
+			return false;
+		}
+
+		if(empty($search)) {
+			$groupUsers = count($members);
+			$this->access->connection->writeToCache($cachekey, $groupUsers);
+			return $groupUsers;
+		}
+		$isMemberUid =
+			(strtolower($this->access->connection->ldapGroupMemberAssocAttr)
+			=== 'memberuid');
+
+		//we need to apply the search filter
+		//alternatives that need to be checked:
+		//a) get all users by search filter and array_intersect them
+		//b) a, but only when less than 1k 10k ?k users like it is
+		//c) put all DNs|uids in a LDAP filter, combine with the search string
+		//   and let it count.
+		//For now this is not important, because the only use of this method
+		//does not supply a search string
+		$groupUsers = array();
+		foreach($members as $member) {
+			if($isMemberUid) {
+				//we got uids, need to get their DNs to 'tranlsate' them to usernames
+				$filter = $this->access->combineFilterWithAnd(array(
+					\OCP\Util::mb_str_replace('%uid', $member,
+						$this->access->connection->ldapLoginFilter, 'UTF-8'),
+					$this->access->getFilterPartForUserSearch($search)
+				));
+				$ldap_users = $this->access->fetchListOfUsers($filter, 'dn');
+				if(count($ldap_users) < 1) {
+					continue;
+				}
+				$groupUsers[] = $this->access->dn2username($ldap_users[0]);
+			} else {
+				//we need to apply the search filter now
+				if(!$this->access->readAttribute($member,
+					$this->access->connection->ldapUserDisplayName,
+					$this->access->getFilterPartForUserSearch($search))) {
+					continue;
+				}
+				// dn2username will also check if the users belong to the allowed base
+				if($ocname = $this->access->dn2username($member)) {
+					$groupUsers[] = $ocname;
+				}
+			}
+		}
+
+		return count($groupUsers);
 	}
 
 	/**
-	 * @brief get a list of all groups
-	 * @returns array with group names
+	 * get a list of all groups
+	 * @return array with group names
 	 *
 	 * Returns a list with all groups (used by getGroups)
 	 */
@@ -335,8 +402,8 @@ class GROUP_LDAP extends BackendUtility implements \OCP\GroupInterface {
 	}
 
 	/**
-	 * @brief get a list of all groups using a paged search
-	 * @returns array with group names
+	 * get a list of all groups using a paged search
+	 * @return array with group names
 	 *
 	 * Returns a list with all groups
    	 * Uses a paged search if available to override a
@@ -376,6 +443,9 @@ class GROUP_LDAP extends BackendUtility implements \OCP\GroupInterface {
 		return $allGroups;
 	}
 
+	/**
+	 * @param string $group
+	 */
 	public function groupMatchesFilter($group) {
 		return (strripos($group, $this->groupSearch) !== false);
 	}
@@ -410,14 +480,14 @@ class GROUP_LDAP extends BackendUtility implements \OCP\GroupInterface {
 	}
 
 	/**
-	* @brief Check if backend implements actions
-	* @param $actions bitwise-or'ed actions
-	* @returns boolean
+	* Check if backend implements actions
+	* @param int $actions bitwise-or'ed actions
+	* @return boolean
 	*
 	* Returns the supported actions as int to be
 	* compared with OC_USER_BACKEND_CREATE_USER etc.
 	*/
 	public function implementsActions($actions) {
-		return (bool)(OC_GROUP_BACKEND_GET_DISPLAYNAME	& $actions);
+		return (bool)(OC_GROUP_BACKEND_COUNT_USERS & $actions);
 	}
 }

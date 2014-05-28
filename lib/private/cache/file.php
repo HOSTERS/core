@@ -14,7 +14,7 @@ class File {
 
 	/**
 	 * Returns the cache storage for the logged in user
-	 * @return cache storage
+	 * @return \OC\Files\View cache storage
 	 */
 	protected function getStorage() {
 		if (isset($this->storage)) {
@@ -48,7 +48,7 @@ class File {
 	/**
 	 * Returns the size of the stored/cached data
 	 *
-	 * @param $key
+	 * @param string $key
 	 * @return int
 	 */
 	public function size($key) {

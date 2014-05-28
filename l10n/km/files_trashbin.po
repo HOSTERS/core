@@ -3,12 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# សុវិចិត្រ Sovichet ទេព Tep, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-03-11 01:54-0400\n"
-"PO-Revision-Date: 2014-03-11 05:55+0000\n"
+"POT-Creation-Date: 2014-05-17 01:54-0400\n"
+"PO-Revision-Date: 2014-05-17 05:54+0000\n"
 "Last-Translator: I Robot\n"
 "Language-Team: Khmer (http://www.transifex.com/projects/p/owncloud/language/km/)\n"
 "MIME-Version: 1.0\n"
@@ -20,45 +21,41 @@ msgstr ""
 #: ajax/delete.php:59
 #, php-format
 msgid "Couldn't delete %s permanently"
-msgstr ""
+msgstr "មិន​អាច​លុប %s ចោល​ជា​អចិន្ត្រៃយ៍​ទេ"
 
 #: ajax/undelete.php:64
 #, php-format
 msgid "Couldn't restore %s"
-msgstr ""
+msgstr "មិន​អាច​ស្ដារ %s ឡើង​វិញ​បាន​ទេ"
 
-#: js/filelist.js:23
+#: appinfo/app.php:13 js/filelist.js:34
 msgid "Deleted files"
-msgstr ""
+msgstr "ឯកសារ​ដែល​បាន​លុប"
 
-#: js/trash.js:16 js/trash.js:103 js/trash.js:152
-msgid "Error"
-msgstr "កំហុស"
-
-#: lib/trashbin.php:852 lib/trashbin.php:854
-msgid "restored"
-msgstr ""
-
-#: templates/index.php:7
-msgid "Nothing in here. Your trash bin is empty!"
-msgstr ""
-
-#: templates/index.php:20
-msgid "Name"
-msgstr "ឈ្មោះ"
-
-#: templates/index.php:23 templates/index.php:25
+#: js/app.js:53 templates/index.php:21 templates/index.php:23
 msgid "Restore"
 msgstr "ស្ដារ​មក​វិញ"
 
-#: templates/index.php:31
-msgid "Deleted"
-msgstr ""
+#: js/filelist.js:119 js/filelist.js:164 js/filelist.js:214
+msgid "Error"
+msgstr "កំហុស"
 
-#: templates/index.php:34 templates/index.php:35
+#: lib/trashbin.php:861 lib/trashbin.php:863
+msgid "restored"
+msgstr "បាន​ស្ដារ​វិញ"
+
+#: templates/index.php:7
+msgid "Nothing in here. Your trash bin is empty!"
+msgstr "គ្មាន​អ្វី​នៅ​ទីនេះ​ទេ។ ធុង​សំរាម​របស់​អ្នក​គឺ​ទទេ!"
+
+#: templates/index.php:18
+msgid "Name"
+msgstr "ឈ្មោះ"
+
+#: templates/index.php:29
+msgid "Deleted"
+msgstr "បាន​លុប"
+
+#: templates/index.php:32 templates/index.php:33
 msgid "Delete"
 msgstr "លុប"
-
-#: templates/part.breadcrumb.php:8
-msgid "Deleted Files"
-msgstr ""

@@ -5,15 +5,15 @@
 # Translators:
 # André Koot <meneer@tken.net>, 2013-2014
 # helonaut, 2013
-# kwillems <kwillems@zonnet.nl>, 2013
+# kwillems <kwillems@zonnet.nl>, 2013-2014
 # Len <lenny@weijl.org>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-03-27 01:55-0400\n"
-"PO-Revision-Date: 2014-03-26 19:01+0000\n"
-"Last-Translator: André Koot <meneer@tken.net>\n"
+"POT-Creation-Date: 2014-05-28 01:54-0400\n"
+"PO-Revision-Date: 2014-05-28 05:54+0000\n"
+"Last-Translator: I Robot\n"
 "Language-Team: Dutch (http://www.transifex.com/projects/p/owncloud/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -51,15 +51,15 @@ msgstr "E-mail verzonden"
 msgid "You need to set your user email before being able to send test emails."
 msgstr "U moet uw e-mailadres instellen voordat u testberichten kunt versturen."
 
-#: admin/controller.php:116 templates/admin.php:299
+#: admin/controller.php:116 templates/admin.php:331
 msgid "Send mode"
 msgstr "Verstuurmodus"
 
-#: admin/controller.php:118 templates/admin.php:312 templates/personal.php:159
+#: admin/controller.php:118 templates/admin.php:344 templates/personal.php:144
 msgid "Encryption"
 msgstr "Versleuteling"
 
-#: admin/controller.php:120 templates/admin.php:336
+#: admin/controller.php:120 templates/admin.php:368
 msgid "Authentication method"
 msgstr "Authenticatiemethode"
 
@@ -68,7 +68,7 @@ msgid "Unable to load list from App Store"
 msgstr "Kan de lijst niet van de App store laden"
 
 #: ajax/changedisplayname.php:25 ajax/removeuser.php:15 ajax/setquota.php:17
-#: ajax/togglegroups.php:20 changepassword/controller.php:55
+#: ajax/togglegroups.php:20 changepassword/controller.php:49
 msgid "Authentication error"
 msgstr "Authenticatie fout"
 
@@ -88,6 +88,30 @@ msgstr "Groep bestaat al"
 msgid "Unable to add group"
 msgstr "Niet in staat om groep toe te voegen"
 
+#: ajax/decryptall.php:31
+msgid "Files decrypted successfully"
+msgstr "Bestanden succesvol ontsleuteld"
+
+#: ajax/decryptall.php:33
+msgid ""
+"Couldn't decrypt your files, please check your owncloud.log or ask your "
+"administrator"
+msgstr "Kon uw bestanden niet ontsleutelem. Controleer uw owncloud logs of vraag het uw beheerder"
+
+#: ajax/decryptall.php:36
+msgid "Couldn't decrypt your files, check your password and try again"
+msgstr "Kon uw bestanden niet ontsleutelen. Controleer uw wachtwoord en probeer het opnieuw"
+
+#: ajax/deletekeys.php:14
+msgid "Encryption keys deleted permanently"
+msgstr "Cryptosleutels permanent verwijderd"
+
+#: ajax/deletekeys.php:16
+msgid ""
+"Couldn't permanently delete your encryption keys, please check your "
+"owncloud.log or ask your administrator"
+msgstr "Kom uw cryptosleutels niet permanent verwijderen. Controleer uw owncloud.log, of neem contact op met uw beheerder."
+
 #: ajax/lostpassword.php:12
 msgid "Email saved"
 msgstr "E-mail bewaard"
@@ -103,6 +127,16 @@ msgstr "Niet in staat om groep te verwijderen"
 #: ajax/removeuser.php:25
 msgid "Unable to delete user"
 msgstr "Niet in staat om gebruiker te verwijderen"
+
+#: ajax/restorekeys.php:14
+msgid "Backups restored successfully"
+msgstr "Backup succesvol terggezet"
+
+#: ajax/restorekeys.php:23
+msgid ""
+"Couldn't restore your encryption keys, please check your owncloud.log or ask"
+" your administrator"
+msgstr "Kon uw cryptosleutels niet herstellen. Controleer uw owncloud.log of neem contact op met uw beheerder"
 
 #: ajax/setlanguage.php:15
 msgid "Language changed"
@@ -130,36 +164,36 @@ msgstr "Niet in staat om gebruiker te verwijderen uit groep %s"
 msgid "Couldn't update app."
 msgstr "Kon de app niet bijwerken."
 
-#: changepassword/controller.php:20
+#: changepassword/controller.php:17
 msgid "Wrong password"
 msgstr "Onjuist wachtwoord"
 
-#: changepassword/controller.php:42
+#: changepassword/controller.php:36
 msgid "No user supplied"
 msgstr "Geen gebruiker opgegeven"
 
-#: changepassword/controller.php:74
+#: changepassword/controller.php:68
 msgid ""
 "Please provide an admin recovery password, otherwise all user data will be "
 "lost"
 msgstr "Voer een beheerdersherstelwachtwoord in, anders zullen alle gebruikersgegevens verloren gaan"
 
-#: changepassword/controller.php:79
+#: changepassword/controller.php:73
 msgid ""
 "Wrong admin recovery password. Please check the password and try again."
 msgstr "Onjuist beheerdersherstelwachtwoord. Controleer het wachtwoord en probeer het opnieuw."
 
-#: changepassword/controller.php:87
+#: changepassword/controller.php:81
 msgid ""
 "Back-end doesn't support password change, but the users encryption key was "
 "successfully updated."
 msgstr "De Back-end ondersteunt geen wachtwoordwijzigingen, maar de cryptosleutel van de gebruiker is succesvol bijgewerkt."
 
-#: changepassword/controller.php:92 changepassword/controller.php:103
+#: changepassword/controller.php:86 changepassword/controller.php:97
 msgid "Unable to change password"
 msgstr "Kan wachtwoord niet wijzigen"
 
-#: js/admin.js:73
+#: js/admin.js:126
 msgid "Sending..."
 msgstr "Versturen..."
 
@@ -207,7 +241,7 @@ msgstr "Fout bij bijwerken app"
 msgid "Error"
 msgstr "Fout"
 
-#: js/apps.js:153 templates/apps.php:54
+#: js/apps.js:153 templates/apps.php:55
 msgid "Update"
 msgstr "Bijwerken"
 
@@ -215,33 +249,41 @@ msgstr "Bijwerken"
 msgid "Updated"
 msgstr "Bijgewerkt"
 
-#: js/personal.js:246
+#: js/personal.js:256
 msgid "Select a profile picture"
 msgstr "Kies een profielafbeelding"
 
-#: js/personal.js:277
+#: js/personal.js:287
 msgid "Very weak password"
 msgstr "Zeer zwak wachtwoord"
 
-#: js/personal.js:278
+#: js/personal.js:288
 msgid "Weak password"
 msgstr "Zwak wachtwoord"
 
-#: js/personal.js:279
+#: js/personal.js:289
 msgid "So-so password"
 msgstr "Matig wachtwoord"
 
-#: js/personal.js:280
+#: js/personal.js:290
 msgid "Good password"
 msgstr "Goed wachtwoord"
 
-#: js/personal.js:281
+#: js/personal.js:291
 msgid "Strong password"
 msgstr "Sterk wachtwoord"
 
-#: js/personal.js:316
+#: js/personal.js:310
 msgid "Decrypting files... Please wait, this can take some time."
 msgstr "Bestanden worden gedecodeerd... Even geduld alstublieft, dit kan even duren."
+
+#: js/personal.js:324
+msgid "Delete encryption keys permanently."
+msgstr "Verwijder de encryptiesleutels permanent"
+
+#: js/personal.js:338
+msgid "Restore encryption keys."
+msgstr "Herstel de encryptiesleutels"
 
 #: js/users.js:47
 msgid "deleted"
@@ -255,8 +297,8 @@ msgstr "ongedaan maken"
 msgid "Unable to remove user"
 msgstr "Kon gebruiker niet verwijderen"
 
-#: js/users.js:101 templates/users.php:24 templates/users.php:88
-#: templates/users.php:116
+#: js/users.js:101 templates/admin.php:280 templates/users.php:24
+#: templates/users.php:88 templates/users.php:116
 msgid "Groups"
 msgstr "Groepen"
 
@@ -288,7 +330,7 @@ msgstr "Er moet een geldig wachtwoord worden opgegeven"
 msgid "Warning: Home directory for user \"{user}\" already exists"
 msgstr "Waarschuwing: Home directory voor gebruiker \"{user}\" bestaat al"
 
-#: personal.php:49 personal.php:50
+#: personal.php:50 personal.php:51
 msgid "__language_name__"
 msgstr "Nederlands"
 
@@ -476,128 +518,156 @@ msgstr "Apps toestaan de Share API te gebruiken"
 msgid "Allow links"
 msgstr "Toestaan links"
 
-#: templates/admin.php:220
-msgid "Allow users to share items to the public with links"
-msgstr "Toestaan dat gebruikers objecten met links delen met anderen"
+#: templates/admin.php:223
+msgid "Enforce password protection"
+msgstr "Dwing wachtwoordbeveiliging af"
 
-#: templates/admin.php:227
+#: templates/admin.php:226
 msgid "Allow public uploads"
 msgstr "Sta publieke uploads toe"
 
-#: templates/admin.php:228
-msgid ""
-"Allow users to enable others to upload into their publicly shared folders"
-msgstr "Sta gebruikers toe anderen in hun publiek gedeelde mappen bestanden te uploaden"
+#: templates/admin.php:230
+msgid "Set default expiration date"
+msgstr "Stel standaard vervaldatum in"
+
+#: templates/admin.php:232
+msgid "Expire after "
+msgstr "Vervalt na"
 
 #: templates/admin.php:235
+msgid "days"
+msgstr "dagen"
+
+#: templates/admin.php:238
+msgid "Enforce expiration date"
+msgstr "Verplicht de vervaldatum"
+
+#: templates/admin.php:242
+msgid "Allow users to share items to the public with links"
+msgstr "Toestaan dat gebruikers objecten met links delen met anderen"
+
+#: templates/admin.php:249
 msgid "Allow resharing"
 msgstr "Toestaan opnieuw delen"
 
-#: templates/admin.php:236
+#: templates/admin.php:250
 msgid "Allow users to share items shared with them again"
 msgstr "Toestaan dat gebruikers objecten die anderen met hun gedeeld hebben zelf ook weer delen met anderen"
 
-#: templates/admin.php:243
+#: templates/admin.php:257
 msgid "Allow users to share with anyone"
 msgstr "Toestaan dat gebruikers met iedereen delen"
 
-#: templates/admin.php:246
+#: templates/admin.php:260
 msgid "Allow users to only share with users in their groups"
 msgstr "Instellen dat gebruikers alleen met leden binnen hun groepen delen"
 
-#: templates/admin.php:253
+#: templates/admin.php:267
 msgid "Allow mail notification"
 msgstr "Toestaan e-mailnotificaties"
 
-#: templates/admin.php:254
-msgid "Allow user to send mail notification for shared files"
+#: templates/admin.php:268
+msgid "Allow users to send mail notification for shared files"
 msgstr "Sta gebruikers toe om e-mailnotificaties  te versturen voor gedeelde bestanden"
 
-#: templates/admin.php:261
+#: templates/admin.php:275
+msgid "Exclude groups from sharing"
+msgstr "Sluit groepen uit van delen"
+
+#: templates/admin.php:286
+msgid ""
+"These groups will still be able to receive shares, but not to initiate them."
+msgstr "Deze groepen kunnen gedeelde mappen bestanden ontvangen, maar kunnen ze niet starten."
+
+#: templates/admin.php:293
 msgid "Security"
 msgstr "Beveiliging"
 
-#: templates/admin.php:274
+#: templates/admin.php:306
 msgid "Enforce HTTPS"
 msgstr "Afdwingen HTTPS"
 
-#: templates/admin.php:276
+#: templates/admin.php:308
 #, php-format
 msgid "Forces the clients to connect to %s via an encrypted connection."
 msgstr "Dwingt de clients om een versleutelde verbinding te maken met %s"
 
-#: templates/admin.php:282
+#: templates/admin.php:314
 #, php-format
 msgid ""
 "Please connect to your %s via HTTPS to enable or disable the SSL "
 "enforcement."
 msgstr "Maak verbinding naar uw %s via HTTPS om een geforceerde versleutelde verbinding in- of uit te schakelen."
 
-#: templates/admin.php:294
+#: templates/admin.php:326
 msgid "Email Server"
 msgstr "E-mailserver"
 
-#: templates/admin.php:296
+#: templates/admin.php:328
 msgid "This is used for sending out notifications."
 msgstr "Dit wordt gestuurd voor het verzenden van meldingen."
 
-#: templates/admin.php:327
+#: templates/admin.php:359
 msgid "From address"
 msgstr "Afzenderadres"
 
-#: templates/admin.php:349
+#: templates/admin.php:360
+msgid "mail"
+msgstr ""
+
+#: templates/admin.php:381
 msgid "Authentication required"
 msgstr "Authenticatie vereist"
 
-#: templates/admin.php:353
+#: templates/admin.php:385
 msgid "Server address"
 msgstr "Server adres"
 
-#: templates/admin.php:357
+#: templates/admin.php:389
 msgid "Port"
 msgstr "Poort"
 
-#: templates/admin.php:362
+#: templates/admin.php:394
 msgid "Credentials"
 msgstr "Inloggegevens"
 
-#: templates/admin.php:363
+#: templates/admin.php:395
 msgid "SMTP Username"
 msgstr "SMTP gebruikersnaam"
 
-#: templates/admin.php:366
+#: templates/admin.php:398
 msgid "SMTP Password"
 msgstr "SMTP wachtwoord"
 
-#: templates/admin.php:370
+#: templates/admin.php:402
 msgid "Test email settings"
 msgstr "Test e-mailinstellingen"
 
-#: templates/admin.php:371
+#: templates/admin.php:403
 msgid "Send email"
 msgstr "Versturen e-mail"
 
-#: templates/admin.php:376
+#: templates/admin.php:408
 msgid "Log"
 msgstr "Log"
 
-#: templates/admin.php:377
+#: templates/admin.php:409
 msgid "Log level"
 msgstr "Log niveau"
 
-#: templates/admin.php:409
+#: templates/admin.php:441
 msgid "More"
 msgstr "Meer"
 
-#: templates/admin.php:410
+#: templates/admin.php:442
 msgid "Less"
 msgstr "Minder"
 
-#: templates/admin.php:416 templates/personal.php:181
+#: templates/admin.php:448 templates/personal.php:196
 msgid "Version"
 msgstr "Versie"
 
-#: templates/admin.php:420 templates/personal.php:184
+#: templates/admin.php:452 templates/personal.php:199
 msgid ""
 "Developed by the <a href=\"http://ownCloud.org/contact\" "
 "target=\"_blank\">ownCloud community</a>, the <a "
@@ -615,23 +685,23 @@ msgstr "App toevoegen"
 msgid "More Apps"
 msgstr "Meer apps"
 
-#: templates/apps.php:37
+#: templates/apps.php:38
 msgid "Select an App"
 msgstr "Selecteer een app"
 
-#: templates/apps.php:42
+#: templates/apps.php:43
 msgid "Documentation:"
 msgstr "Documentatie:"
 
-#: templates/apps.php:48
+#: templates/apps.php:49
 msgid "See application page at apps.owncloud.com"
 msgstr "Zie de applicatiepagina op apps.owncloud.com"
 
-#: templates/apps.php:50
+#: templates/apps.php:51
 msgid "See application website"
 msgstr "Zie website van de applicatie"
 
-#: templates/apps.php:52
+#: templates/apps.php:53
 msgid "<span class=\"licence\"></span>-licensed by <span class=\"author\"></span>"
 msgstr "<span class=\"licence\"></span>-Gelicenseerd door <span class=\"author\"></span>"
 
@@ -668,110 +738,114 @@ msgstr "Toon de Eerste start Wizard opnieuw"
 msgid "You have used <strong>%s</strong> of the available <strong>%s</strong>"
 msgstr "Je hebt <strong>%s</strong> gebruikt van de beschikbare <strong>%s<strong>"
 
-#: templates/personal.php:39 templates/users.php:21 templates/users.php:87
+#: templates/personal.php:38 templates/users.php:21 templates/users.php:87
 msgid "Password"
 msgstr "Wachtwoord"
 
-#: templates/personal.php:40
+#: templates/personal.php:39
 msgid "Your password was changed"
 msgstr "Je wachtwoord is veranderd"
 
-#: templates/personal.php:41
+#: templates/personal.php:40
 msgid "Unable to change your password"
 msgstr "Niet in staat om uw wachtwoord te wijzigen"
 
-#: templates/personal.php:43
+#: templates/personal.php:42
 msgid "Current password"
 msgstr "Huidig wachtwoord"
 
-#: templates/personal.php:46
+#: templates/personal.php:45
 msgid "New password"
 msgstr "Nieuw"
 
-#: templates/personal.php:50
+#: templates/personal.php:49
 msgid "Change password"
 msgstr "Wijzig wachtwoord"
 
-#: templates/personal.php:64 templates/users.php:86
+#: templates/personal.php:61 templates/users.php:86
 msgid "Full Name"
 msgstr "Volledige naam"
 
-#: templates/personal.php:81
+#: templates/personal.php:76
 msgid "Email"
 msgstr "E-mailadres"
 
-#: templates/personal.php:83
+#: templates/personal.php:78
 msgid "Your email address"
 msgstr "Uw e-mailadres"
 
-#: templates/personal.php:86
+#: templates/personal.php:81
 msgid ""
 "Fill in an email address to enable password recovery and receive "
 "notifications"
 msgstr "Vul een e-mailbericht in om wachtwoordherstel mogelijk te maken en meldingen te ontvangen"
 
-#: templates/personal.php:96
+#: templates/personal.php:89
 msgid "Profile picture"
 msgstr "Profielafbeelding"
 
-#: templates/personal.php:101
+#: templates/personal.php:94
 msgid "Upload new"
 msgstr "Upload een nieuwe"
 
-#: templates/personal.php:103
+#: templates/personal.php:96
 msgid "Select new from Files"
 msgstr "Selecteer een nieuwe vanuit bestanden"
 
-#: templates/personal.php:104
+#: templates/personal.php:97
 msgid "Remove image"
 msgstr "Verwijder afbeelding"
 
-#: templates/personal.php:105
+#: templates/personal.php:98
 msgid "Either png or jpg. Ideally square but you will be able to crop it."
 msgstr "Of png, of jpg. Bij voorkeur vierkant, maar u kunt bijsnijden."
 
-#: templates/personal.php:107
+#: templates/personal.php:100
 msgid "Your avatar is provided by your original account."
 msgstr "Uw avatar is verstrekt door uw originele account."
 
-#: templates/personal.php:111
+#: templates/personal.php:104
 msgid "Cancel"
 msgstr "Annuleer"
 
-#: templates/personal.php:112
+#: templates/personal.php:105
 msgid "Choose as profile image"
 msgstr "Kies als profielafbeelding"
 
-#: templates/personal.php:120 templates/personal.php:121
+#: templates/personal.php:111 templates/personal.php:112
 msgid "Language"
 msgstr "Taal"
 
-#: templates/personal.php:140
+#: templates/personal.php:131
 msgid "Help translate"
 msgstr "Help met vertalen"
 
-#: templates/personal.php:147
-msgid "WebDAV"
-msgstr "WebDAV"
-
-#: templates/personal.php:149
-#, php-format
-msgid ""
-"Use this address to <a href=\"%s\" target=\"_blank\">access your Files via "
-"WebDAV</a>"
-msgstr "Gebruik deze link <a href=\"%s\" target=\"_blank\">om uw bestanden via WebDAV te benaderen</a>"
-
-#: templates/personal.php:161
+#: templates/personal.php:150
 msgid "The encryption app is no longer enabled, please decrypt all your files"
 msgstr "De crypto app is niet langer geactiveerd, u moet alle bestanden decrypten."
 
-#: templates/personal.php:167
+#: templates/personal.php:156
 msgid "Log-in password"
 msgstr "Inlog-wachtwoord"
 
-#: templates/personal.php:172
+#: templates/personal.php:161
 msgid "Decrypt all Files"
 msgstr "Decodeer alle bestanden"
+
+#: templates/personal.php:174
+msgid ""
+"Your encryption keys are moved to a backup location. If something went wrong"
+" you can restore the keys. Only delete them permanently if you are sure that"
+" all files are decrypted correctly."
+msgstr "Uw cryptosleutels zijn verplaatst naar een backup locatie. Als iets iets verkeerd ging, kunt u de sleutels herstellen. Verwijder ze alleen permanent als u zeker weet dat de bestanden goed zijn versleuteld."
+
+#: templates/personal.php:178
+msgid "Restore Encryption Keys"
+msgstr "Herstel cryptosleutels"
+
+#: templates/personal.php:182
+msgid "Delete Encryption Keys"
+msgstr "Verwijder cryptosleutels"
 
 #: templates/users.php:19
 msgid "Login Name"

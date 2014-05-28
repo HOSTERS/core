@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-04-08 01:56-0400\n"
-"PO-Revision-Date: 2014-04-08 05:56+0000\n"
+"POT-Creation-Date: 2014-05-28 01:54-0400\n"
+"PO-Revision-Date: 2014-05-28 05:54+0000\n"
 "Last-Translator: I Robot\n"
 "Language-Team: Ukrainian (http://www.transifex.com/projects/p/owncloud/language/uk/)\n"
 "MIME-Version: 1.0\n"
@@ -70,6 +70,10 @@ msgstr "Застосувати налаштування  з останньої �
 msgid "Keep settings?"
 msgstr "Зберегти налаштування ?"
 
+#: js/settings.js:93
+msgid "{nbServer}. Server"
+msgstr ""
+
 #: js/settings.js:99
 msgid "Cannot add server configuration"
 msgstr "Неможливо додати конфігурацію сервера"
@@ -86,47 +90,59 @@ msgstr "Успіх"
 msgid "Error"
 msgstr "Помилка"
 
-#: js/settings.js:838
+#: js/settings.js:244
+msgid "Please specify a Base DN"
+msgstr ""
+
+#: js/settings.js:245
+msgid "Could not determine Base DN"
+msgstr ""
+
+#: js/settings.js:276
+msgid "Please specify the port"
+msgstr ""
+
+#: js/settings.js:780
 msgid "Configuration OK"
 msgstr ""
 
-#: js/settings.js:847
+#: js/settings.js:789
 msgid "Configuration incorrect"
 msgstr ""
 
-#: js/settings.js:856
+#: js/settings.js:798
 msgid "Configuration incomplete"
 msgstr ""
 
-#: js/settings.js:873 js/settings.js:882
+#: js/settings.js:815 js/settings.js:824
 msgid "Select groups"
 msgstr "Оберіть групи"
 
-#: js/settings.js:876 js/settings.js:885
+#: js/settings.js:818 js/settings.js:827
 msgid "Select object classes"
 msgstr ""
 
-#: js/settings.js:879
+#: js/settings.js:821
 msgid "Select attributes"
 msgstr ""
 
-#: js/settings.js:906
+#: js/settings.js:848
 msgid "Connection test succeeded"
 msgstr "Перевірка з'єднання пройшла успішно"
 
-#: js/settings.js:913
+#: js/settings.js:855
 msgid "Connection test failed"
 msgstr "Перевірка з'єднання завершилась неуспішно"
 
-#: js/settings.js:922
+#: js/settings.js:864
 msgid "Do you really want to delete the current Server Configuration?"
 msgstr "Ви дійсно бажаєте видалити поточну конфігурацію сервера ?"
 
-#: js/settings.js:923
+#: js/settings.js:865
 msgid "Confirm Deletion"
 msgstr "Підтвердіть Видалення"
 
-#: lib/wizard.php:79 lib/wizard.php:93
+#: lib/wizard.php:83 lib/wizard.php:97
 #, php-format
 msgid "%s group found"
 msgid_plural "%s groups found"
@@ -134,7 +150,7 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: lib/wizard.php:122
+#: lib/wizard.php:130
 #, php-format
 msgid "%s user found"
 msgid_plural "%s users found"
@@ -142,13 +158,29 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: lib/wizard.php:784 lib/wizard.php:796
+#: lib/wizard.php:825 lib/wizard.php:837
 msgid "Invalid Host"
 msgstr ""
 
-#: lib/wizard.php:963
+#: lib/wizard.php:1025
 msgid "Could not find the desired feature"
 msgstr ""
+
+#: settings.php:52
+msgid "Server"
+msgstr ""
+
+#: settings.php:53
+msgid "User Filter"
+msgstr ""
+
+#: settings.php:54
+msgid "Login Filter"
+msgstr ""
+
+#: settings.php:55
+msgid "Group Filter"
+msgstr "Фільтр Груп"
 
 #: templates/part.settingcontrols.php:2
 msgid "Save"
@@ -222,9 +254,22 @@ msgid ""
 "username in the login action. Example: \"uid=%%uid\""
 msgstr ""
 
+#: templates/part.wizard-server.php:6
+msgid "1. Server"
+msgstr ""
+
+#: templates/part.wizard-server.php:13
+#, php-format
+msgid "%s. Server:"
+msgstr ""
+
 #: templates/part.wizard-server.php:18
 msgid "Add Server Configuration"
 msgstr "Додати налаштування Сервера"
+
+#: templates/part.wizard-server.php:21
+msgid "Delete Configuration"
+msgstr ""
 
 #: templates/part.wizard-server.php:30
 msgid "Host"
@@ -289,6 +334,14 @@ msgstr "Назад"
 msgid "Continue"
 msgstr "Продовжити"
 
+#: templates/settings.php:7
+msgid "Expert"
+msgstr ""
+
+#: templates/settings.php:8
+msgid "Advanced"
+msgstr "Додатково"
+
 #: templates/settings.php:11
 msgid ""
 "<b>Warning:</b> Apps user_ldap and user_webdavauth are incompatible. You may"
@@ -337,8 +390,8 @@ msgid "Only connect to the replica server."
 msgstr ""
 
 #: templates/settings.php:26
-msgid "Case insensitve LDAP server (Windows)"
-msgstr "Нечутливий до регістру LDAP сервер (Windows)"
+msgid "Case insensitive LDAP server (Windows)"
+msgstr ""
 
 #: templates/settings.php:27
 msgid "Turn off SSL certificate validation."

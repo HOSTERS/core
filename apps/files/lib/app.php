@@ -31,6 +31,11 @@ class App {
 	private $l10n;
 
 	/**
+	 * @var \OCP\INavigationManager
+	 */
+	private static $navigationManager;
+
+	/**
 	 * @var \OC\Files\View
 	 */
 	private $view;
@@ -38,6 +43,18 @@ class App {
 	public function __construct($view, $l10n) {
 		$this->view = $view;
 		$this->l10n = $l10n;
+	}
+
+	/**
+	 * Returns the app's navigation manager
+	 *
+	 * @return \OCP\INavigationManager
+	 */
+	public static function getNavigationManager() {
+		if (self::$navigationManager === null) {
+			self::$navigationManager = new \OC\NavigationManager();
+		}
+		return self::$navigationManager;
 	}
 
 	/**
@@ -54,13 +71,8 @@ class App {
 			'data'		=> NULL
 		);
 
-		// rename to "/Shared" is denied
-		if( $dir === '/' and $newname === 'Shared' ) {
-			$result['data'] = array(
-				'message'	=> $this->l10n->t("Invalid folder name. Usage of 'Shared' is reserved.")
-			);
 		// rename to non-existing folder is denied
-		} else if (!$this->view->file_exists($dir)) {
+		if (!$this->view->file_exists($dir)) {
 			$result['data'] = array('message' => (string)$this->l10n->t(
 					'The target folder has been moved or deleted.',
 					array($dir)),
@@ -68,7 +80,7 @@ class App {
 				);
 		// rename to existing file is denied
 		} else if ($this->view->file_exists($dir . '/' . $newname)) {
-			
+
 			$result['data'] = array(
 				'message'	=> $this->l10n->t(
 						"The name %s is already used in the folder %s. Please choose a different name.",
@@ -77,8 +89,6 @@ class App {
 		} else if (
 			// rename to "." is denied
 			$newname !== '.' and
-			// rename of  "/Shared" is denied
-			!($dir === '/' and $oldname === 'Shared') and
 			// THEN try to rename
 			$this->view->rename($dir . '/' . $oldname, $dir . '/' . $newname)
 		) {

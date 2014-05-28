@@ -4,14 +4,15 @@
 # 
 # Translators:
 # rogerc, 2013-2014
+# Josep Torné <josep@substantiu.com>, 2014
 # rogerc, 2013
 # victek, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: ownCloud\n"
 "Report-Msgid-Bugs-To: translations@owncloud.org\n"
-"POT-Creation-Date: 2014-04-08 01:56-0400\n"
-"PO-Revision-Date: 2014-04-08 05:56+0000\n"
+"POT-Creation-Date: 2014-05-28 01:54-0400\n"
+"PO-Revision-Date: 2014-05-28 05:54+0000\n"
 "Last-Translator: I Robot\n"
 "Language-Team: Catalan (http://www.transifex.com/projects/p/owncloud/language/ca/)\n"
 "MIME-Version: 1.0\n"
@@ -73,6 +74,10 @@ msgstr "Voleu prendre l'arranjament de la configuració actual del servidor?"
 msgid "Keep settings?"
 msgstr "Voleu mantenir la configuració?"
 
+#: js/settings.js:93
+msgid "{nbServer}. Server"
+msgstr ""
+
 #: js/settings.js:99
 msgid "Cannot add server configuration"
 msgstr "No es pot afegir la configuració del servidor"
@@ -89,67 +94,95 @@ msgstr "Èxit"
 msgid "Error"
 msgstr "Error"
 
-#: js/settings.js:838
+#: js/settings.js:244
+msgid "Please specify a Base DN"
+msgstr ""
+
+#: js/settings.js:245
+msgid "Could not determine Base DN"
+msgstr ""
+
+#: js/settings.js:276
+msgid "Please specify the port"
+msgstr ""
+
+#: js/settings.js:780
 msgid "Configuration OK"
 msgstr "Configuració correcte"
 
-#: js/settings.js:847
+#: js/settings.js:789
 msgid "Configuration incorrect"
 msgstr "Configuració incorrecte"
 
-#: js/settings.js:856
+#: js/settings.js:798
 msgid "Configuration incomplete"
 msgstr "Configuració incompleta"
 
-#: js/settings.js:873 js/settings.js:882
+#: js/settings.js:815 js/settings.js:824
 msgid "Select groups"
 msgstr "Selecciona els grups"
 
-#: js/settings.js:876 js/settings.js:885
+#: js/settings.js:818 js/settings.js:827
 msgid "Select object classes"
 msgstr "Seleccioneu les classes dels objectes"
 
-#: js/settings.js:879
+#: js/settings.js:821
 msgid "Select attributes"
 msgstr "Seleccioneu els atributs"
 
-#: js/settings.js:906
+#: js/settings.js:848
 msgid "Connection test succeeded"
 msgstr "La prova de connexió ha reeixit"
 
-#: js/settings.js:913
+#: js/settings.js:855
 msgid "Connection test failed"
 msgstr "La prova de connexió ha fallat"
 
-#: js/settings.js:922
+#: js/settings.js:864
 msgid "Do you really want to delete the current Server Configuration?"
 msgstr "Voleu eliminar la configuració actual del servidor?"
 
-#: js/settings.js:923
+#: js/settings.js:865
 msgid "Confirm Deletion"
 msgstr "Confirma l'eliminació"
 
-#: lib/wizard.php:79 lib/wizard.php:93
+#: lib/wizard.php:83 lib/wizard.php:97
 #, php-format
 msgid "%s group found"
 msgid_plural "%s groups found"
 msgstr[0] "S'ha trobat %s grup"
 msgstr[1] "S'han trobat %s grups"
 
-#: lib/wizard.php:122
+#: lib/wizard.php:130
 #, php-format
 msgid "%s user found"
 msgid_plural "%s users found"
 msgstr[0] "S'ha trobat %s usuari"
 msgstr[1] "S'han trobat %s usuaris"
 
-#: lib/wizard.php:784 lib/wizard.php:796
+#: lib/wizard.php:825 lib/wizard.php:837
 msgid "Invalid Host"
 msgstr "Ordinador central no vàlid"
 
-#: lib/wizard.php:963
+#: lib/wizard.php:1025
 msgid "Could not find the desired feature"
 msgstr "La característica desitjada no s'ha trobat"
+
+#: settings.php:52
+msgid "Server"
+msgstr ""
+
+#: settings.php:53
+msgid "User Filter"
+msgstr ""
+
+#: settings.php:54
+msgid "Login Filter"
+msgstr ""
+
+#: settings.php:55
+msgid "Group Filter"
+msgstr "Filtre de grup"
 
 #: templates/part.settingcontrols.php:2
 msgid "Save"
@@ -223,9 +256,22 @@ msgid ""
 "username in the login action. Example: \"uid=%%uid\""
 msgstr "Defineix el filtre a aplicar quan s'intenta iniciar la sessió. %%uid reemplaça el nom d'usuari en l'acció d'inici de sessió. Per exemple: \"uid=%%uid\""
 
+#: templates/part.wizard-server.php:6
+msgid "1. Server"
+msgstr ""
+
+#: templates/part.wizard-server.php:13
+#, php-format
+msgid "%s. Server:"
+msgstr ""
+
 #: templates/part.wizard-server.php:18
 msgid "Add Server Configuration"
 msgstr "Afegeix la configuració del servidor"
+
+#: templates/part.wizard-server.php:21
+msgid "Delete Configuration"
+msgstr ""
 
 #: templates/part.wizard-server.php:30
 msgid "Host"
@@ -290,6 +336,14 @@ msgstr "Enrera"
 msgid "Continue"
 msgstr "Continua"
 
+#: templates/settings.php:7
+msgid "Expert"
+msgstr ""
+
+#: templates/settings.php:8
+msgid "Advanced"
+msgstr "Avançat"
+
 #: templates/settings.php:11
 msgid ""
 "<b>Warning:</b> Apps user_ldap and user_webdavauth are incompatible. You may"
@@ -338,7 +392,7 @@ msgid "Only connect to the replica server."
 msgstr "Connecta només al servidor rèplica."
 
 #: templates/settings.php:26
-msgid "Case insensitve LDAP server (Windows)"
+msgid "Case insensitive LDAP server (Windows)"
 msgstr "Servidor LDAP sense distinció entre majúscules i minúscules (Windows)"
 
 #: templates/settings.php:27
@@ -354,11 +408,11 @@ msgstr "No es recomana, useu-ho només com a prova! Importeu el certificat SSL d
 
 #: templates/settings.php:28
 msgid "Cache Time-To-Live"
-msgstr "Memòria de cau Time-To-Live"
+msgstr "Memòria cau Time-To-Live"
 
 #: templates/settings.php:28
 msgid "in seconds. A change empties the cache."
-msgstr "en segons. Un canvi buidarà la memòria de cau."
+msgstr "en segons. Un canvi buidarà la memòria cau."
 
 #: templates/settings.php:30
 msgid "Directory Settings"
@@ -424,14 +478,14 @@ msgstr "Quan està activat, els grups que contenen grups estan permesos. (Només
 
 #: templates/settings.php:40
 msgid "Paging chunksize"
-msgstr ""
+msgstr "Mida de la pàgina"
 
 #: templates/settings.php:40
 msgid ""
 "Chunksize used for paged LDAP searches that may return bulky results like "
 "user or group enumeration. (Setting it 0 disables paged LDAP searches in "
 "those situations.)"
-msgstr ""
+msgstr "Mida usada per cerques LDAP paginades que podrien retornar respostes de volcat com enumeració d'usuari o grup. (Establint-ho a 0 desactiva les cerques LDAP paginades en aquestes situacions.)"
 
 #: templates/settings.php:42
 msgid "Special Attributes"
@@ -526,7 +580,7 @@ msgid ""
 " is not configuration sensitive, it affects all LDAP configurations! Never "
 "clear the mappings in a production environment, only in a testing or "
 "experimental stage."
-msgstr "Els noms d'usuari s'usen per desar i assignar (meta)dades. Per tal d'identificar amb precisió i reconèixer els usuaris, cada usuari LDAP tindrà un nom d'usuari intern. Això requereix mapatge del nom d'usuari a l'usuari LDAP. El nom d'usuari creat es mapa a la UUID de l'usuari LDAP. A més, la DN es posa a la memòria de cau per reduir la interacció LDAP, però no s'usa per identificació. En cas que la DN canvïi, els canvis es trobaran. El nom d'usuari intern s'usa a tot arreu. Si esborreu els mapatges quedaran sobrants a tot arreu. Esborrar els mapatges no és sensible a la configuració, afecta a totes les configuracions LDAP! No esborreu mai els mapatges en un entorn de producció, només en un estadi de prova o experimental."
+msgstr "Els noms d'usuari s'usen per desar i assignar (meta)dades. Per tal d'identificar amb precisió i reconèixer els usuaris, cada usuari LDAP tindrà un nom d'usuari intern. Això requereix mapatge del nom d'usuari a l'usuari LDAP. El nom d'usuari creat es mapa a la UUID de l'usuari LDAP. A més, la DN es posa a la memòria cau per reduir la interacció LDAP, però no s'usa per identificació. En cas que la DN canvïi, els canvis es trobaran. El nom d'usuari intern s'usa a tot arreu. Si esborreu els mapatges quedaran sobrants a tot arreu. Esborrar els mapatges no és sensible a la configuració, afecta a totes les configuracions LDAP! No esborreu mai els mapatges en un entorn de producció, només en un estadi de prova o experimental."
 
 #: templates/settings.php:62
 msgid "Clear Username-LDAP User Mapping"

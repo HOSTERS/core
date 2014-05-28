@@ -7,6 +7,7 @@
  */
 
 namespace OC\Files\Storage;
+use OC\Files\Cache\Watcher;
 
 /**
  * Storage backend class for providing common filesystem operation methods
@@ -81,6 +82,10 @@ abstract class Common implements \OC\Files\Storage\Storage {
 	}
 
 	public function isSharable($path) {
+		if (\OC_Util::isSharingDisabledForUser()) {
+			return false;
+		}
+
 		return $this->isReadable($path);
 	}
 
@@ -159,9 +164,11 @@ abstract class Common implements \OC\Files\Storage\Storage {
 	}
 
 	public function hash($type, $path, $raw = false) {
-		$tmpFile = $this->getLocalFile($path);
-		$hash = hash_file($type, $tmpFile, $raw);
-		return $hash;
+		$fh = $this->fopen($path, 'rb');
+		$ctx = hash_init($type);
+		hash_update_stream($ctx, $fh);
+		fclose($fh);
+		return hash_final($ctx, $raw);
 	}
 
 	public function search($query) {
@@ -274,6 +281,7 @@ abstract class Common implements \OC\Files\Storage\Storage {
 	public function getWatcher($path = '') {
 		if (!isset($this->watcher)) {
 			$this->watcher = new \OC\Files\Cache\Watcher($this);
+			$this->watcher->setPolicy(\OC::$server->getConfig()->getSystemValue('filesystem_check_changes', Watcher::CHECK_ONCE));
 		}
 		return $this->watcher;
 	}
@@ -315,7 +323,7 @@ abstract class Common implements \OC\Files\Storage\Storage {
 	 * clean a path, i.e. remove all redundant '.' and '..'
 	 * making sure that it can't point to higher than '/'
 	 *
-	 * @param $path The path to clean
+	 * @param string $path The path to clean
 	 * @return string cleaned path
 	 */
 	public function cleanPath($path) {
@@ -345,7 +353,7 @@ abstract class Common implements \OC\Files\Storage\Storage {
 	/**
 	 * get the free space in the storage
 	 *
-	 * @param $path
+	 * @param string $path
 	 * @return int
 	 */
 	public function free_space($path) {
@@ -361,6 +369,9 @@ abstract class Common implements \OC\Files\Storage\Storage {
 		return false;
 	}
 
+	/**
+	 * @param string $path
+	 */
 	protected function getCachedFile($path) {
 		if (!isset($this->cachedFiles[$path])) {
 			$this->cachedFiles[$path] = $this->toTmpFile($path);

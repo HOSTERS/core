@@ -12,13 +12,12 @@ $TRANSLATIONS = array(
 "Share" => "Deelen",
 "Rename" => "Ëm-benennen",
 "Error" => "Fehler",
-"_%n folder_::_%n folders_" => array("",""),
-"_%n file_::_%n files_" => array("",""),
-"_Uploading %n file_::_Uploading %n files_" => array("",""),
 "Name" => "Numm",
 "Size" => "Gréisst",
 "Modified" => "Geännert",
-"Upload" => "Eroplueden",
+"_%n folder_::_%n folders_" => array("",""),
+"_%n file_::_%n files_" => array("",""),
+"_Uploading %n file_::_Uploading %n files_" => array("",""),
 "File handling" => "Fichier handling",
 "Maximum upload size" => "Maximum Upload Gréisst ",
 "max. possible: " => "max. méiglech:",
@@ -36,7 +35,6 @@ $TRANSLATIONS = array(
 "Delete" => "Läschen",
 "Upload too large" => "Upload ze grouss",
 "The files you are trying to upload exceed the maximum size for file uploads on this server." => "Déi Dateien déi Dir probéiert erop ze lueden sinn méi grouss wei déi Maximal Gréisst déi op dësem Server erlaabt ass.",
-"Files are being scanned, please wait." => "Fichieren gi gescannt, war weg.",
-"Current scanning" => "Momentane Scan"
+"Files are being scanned, please wait." => "Fichieren gi gescannt, war weg."
 );
 $PLURAL_FORMS = "nplurals=2; plural=(n != 1);";

@@ -1,8 +1,6 @@
 <?php
 use Assetic\Asset\AssetCollection;
 use Assetic\Asset\FileAsset;
-use Assetic\Asset\GlobAsset;
-use Assetic\AssetManager;
 use Assetic\AssetWriter;
 use Assetic\Filter\CssRewriteFilter;
 
@@ -20,8 +18,9 @@ class OC_TemplateLayout extends OC_Template {
 
 	/**
 	 * @param string $renderas
+	 * @param string $appid application id
 	 */
-	public function __construct( $renderas ) {
+	public function __construct( $renderas, $appid = '' ) {
 		// Decide which page we show
 
 		if( $renderas == 'user' ) {
@@ -48,6 +47,7 @@ class OC_TemplateLayout extends OC_Template {
 
 			// Add navigation entry
 			$this->assign( 'application', '');
+			$this->assign( 'appid', $appid );
 			$navigation = OC_App::getNavigation();
 			$this->assign( 'navigation', $navigation);
 			$this->assign( 'settingsnavigation', OC_App::getSettingsNavigation());
@@ -69,7 +69,7 @@ class OC_TemplateLayout extends OC_Template {
 		}
 
 		$versionParameter = '?v=' . md5(implode(OC_Util::getVersion()));
-		$useAssetPipeline = OC_Config::getValue('asset-pipeline.enabled', false);
+		$useAssetPipeline = $this->isAssetPipelineEnabled();
 		if ($useAssetPipeline) {
 
 			$this->append( 'jsfiles', OC_Helper::linkToRoute('js_config') . $versionParameter);
@@ -104,7 +104,7 @@ class OC_TemplateLayout extends OC_Template {
 	}
 
 	/**
-	 * @brief add a javascript file
+	 * add a javascript file
 	 *
 	 * @param string $application
 	 * @param string|null $file filename
@@ -123,7 +123,7 @@ class OC_TemplateLayout extends OC_Template {
 	}
 
 	/**
-	 * @brief add a css file
+	 * add a css file
 	 *
 	 * @param string $application
 	 * @param string|null $file filename
@@ -142,7 +142,7 @@ class OC_TemplateLayout extends OC_Template {
 	}
 
 	/**
-	 * @brief Add a custom element to the header
+	 * Add a custom element to the header
 	 * @param string $tag tag name of the element
 	 * @param array $attributes array of attributes for the element
 	 * @param string $text the text content for the element
@@ -156,6 +156,10 @@ class OC_TemplateLayout extends OC_Template {
 		);
 	}
 
+	/**
+	 * @param array $styles
+	 * @return array
+	 */
 	private function findStylesheetFiles($styles) {
 		// Read the selected theme from the config file
 		$theme = OC_Util::getTheme();
@@ -170,6 +174,10 @@ class OC_TemplateLayout extends OC_Template {
 		return $locator->getResources();
 	}
 
+	/**
+	 * @param array $scripts
+	 * @return array
+	 */
 	private function findJavascriptFiles($scripts) {
 		// Read the selected theme from the config file
 		$theme = OC_Util::getTheme();
@@ -225,6 +233,10 @@ class OC_TemplateLayout extends OC_Template {
 		$this->append('cssfiles', OC_Helper::linkTo('assets', "$cssHash.css"));
 	}
 
+	/**
+	 * @param array $files
+	 * @return string
+	 */
 	private static function hashScriptNames($files)
 	{
 		$files = array_map(function ($item) {
@@ -235,5 +247,34 @@ class OC_TemplateLayout extends OC_Template {
 
 		sort($files);
 		return hash('md5', implode('', $files));
+	}
+
+	/**
+	 * @return bool
+	 */
+	private function isAssetPipelineEnabled() {
+		// asset management enabled?
+		$useAssetPipeline = OC_Config::getValue('asset-pipeline.enabled', false);
+		if (!$useAssetPipeline) {
+			return false;
+		}
+
+		// assets folder exists?
+		$assetDir = \OC::$SERVERROOT . '/assets';
+		if (!is_dir($assetDir)) {
+			if (!mkdir($assetDir)) {
+				\OCP\Util::writeLog('assets',
+					"Folder <$assetDir> does not exist and/or could not be generated.", \OCP\Util::ERROR);
+				return false;
+			}
+		}
+
+		// assets folder can be accessed?
+		if (!touch($assetDir."/.oc")) {
+			\OCP\Util::writeLog('assets',
+				"Folder <$assetDir> could not be accessed.", \OCP\Util::ERROR);
+			return false;
+		}
+		return $useAssetPipeline;
 	}
 }
