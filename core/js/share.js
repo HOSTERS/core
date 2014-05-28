@@ -59,14 +59,12 @@ OC.Share={
 				image = OC.imagePath('core', 'actions/shared');
 			}
 			if (itemType !== 'file' && itemType !== 'folder') {
-				$fileList.find('a.share[data-item="'+item+'"]').css('background', 'url('+image+') no-repeat center');
+				$('a.share[data-item="'+item+'"]').css('background', 'url('+image+') no-repeat center');
 			} else {
+				// TODO: ultimately this part should be moved to files_sharing app
 				var file = $fileList.find('tr[data-id="'+item+'"]');
 				if (file.length > 0) {
-					var action = $(file).find('.fileactions .action[data-action="Share"]');
-					var img = action.find('img').attr('src', image);
-					action.addClass('permanent');
-					action.html(' <span>'+t('core', 'Shared')+'</span>').prepend(img);
+					this.markFileAsShared(file, true, image);
 				} else {
 					var dir = currentDir;
 					if (dir.length > 1) {
@@ -77,6 +75,7 @@ OC.Share={
 							if (path === data.path && !data.link) {
 								var actions = $fileList.find('.fileactions .action[data-action="Share"]');
 								$.each(actions, function(index, action) {
+									// TODO: use this.markFileAsShared()
 									var img = $(action).find('img');
 									if (img.attr('src') !== OC.imagePath('core', 'actions/public')) {
 										img.attr('src', image);
@@ -115,21 +114,9 @@ OC.Share={
 		if (itemType != 'file' && itemType != 'folder') {
 			$('a.share[data-item="'+itemSource+'"]').css('background', 'url('+image+') no-repeat center');
 		} else {
-			var file = $('tr').filterAttr('data-id', String(itemSource));
-			if (file.length > 0) {
-				var action = $(file).find('.fileactions .action').filterAttr('data-action', 'Share');
-				// in case of multiple lists/rows, there might be more than one visible
-				action.each(function() {
-					var action = $(this);
-					var img = action.find('img').attr('src', image);
-					if (shares) {
-						action.addClass('permanent');
-						action.html(' <span>'+ escapeHTML(t('core', 'Shared'))+'</span>').prepend(img);
-					} else {
-						action.removeClass('permanent');
-						action.html(' <span>'+ escapeHTML(t('core', 'Share'))+'</span>').prepend(img);
-					}
-				});
+			var $tr = $('tr').filterAttr('data-id', String(itemSource));
+			if ($tr.length > 0) {
+				this.markFileAsShared($tr, shares, image);
 			}
 		}
 		if (shares) {
@@ -138,6 +125,50 @@ OC.Share={
 		} else {
 			delete OC.Share.statuses[itemSource];
 		}
+	},
+	/**
+	 * Marks/unmarks a given file as shared
+	 *
+	 * @param $tr file element to mark as shared
+	 * @param state true to mark as shared, false to unmark
+	 * @param image image to use for the icon
+	 */
+	markFileAsShared: function($tr, state, image) {
+		var action = $tr.find('.fileactions .action[data-action="Share"]');
+		var img = action.find('img');
+		var message;
+		var recipients;
+		var owner;
+		if (state) {
+			recipients = $tr.attr('data-share-recipients');
+			owner = $tr.attr('data-share-owner');
+
+			action.addClass('permanent');
+			message = t('core', 'Shared');
+			if (owner && !recipients) {
+				message = t('files_sharing', 'Shared by {owner}', {owner: owner});
+				image = image || OC.imagePath('core', 'actions/share');
+			}
+			if (recipients) {
+				image = image || OC.imagePath('core', 'actions/shared');
+				if (owner) {
+					message = ' ' + t(
+						'files_sharing',
+						'Shared by {owner} with You, {recipients}',
+						{owner: owner, recipients: recipients}
+					);
+				}
+				else {
+					message = t('core', 'Shared with {recipients}', {recipients: recipients});
+				}
+			}
+			action.html(' <span>'+ message + '</span>').prepend(img);
+		}
+		else {
+			action.removeClass('permanent');
+			action.html(' <span>'+ escapeHTML(t('core', 'Share'))+'</span>').prepend(img);
+		}
+		img.attr('src', image);
 	},
 	loadItem:function(itemType, itemSource) {
 		var data = '';
@@ -366,6 +397,7 @@ OC.Share={
 				OC.Share.share(itemType, itemSource, shareType, shareWith, permissions, itemSourceName, expirationDate, function() {
 					OC.Share.addShareWith(shareType, shareWith, selected.item.label, permissions, possiblePermissions);
 					$('#shareWith').val('');
+					$('#dropdown').trigger(new $.Event('sharesChanged', {itemShares: OC.Share.itemShares}));
 					OC.Share.updateIcon(itemType, itemSource);
 				});
 				return false;
@@ -647,6 +679,7 @@ $(document).ready(function() {
 			$li.remove();
 			var index = OC.Share.itemShares[shareType].indexOf(shareWith);
 			OC.Share.itemShares[shareType].splice(index, 1);
+			$('#dropdown').trigger(new $.Event('sharesChanged', {itemShares: OC.Share.itemShares}));
 			OC.Share.updateIcon(itemType, itemSource);
 			if (typeof OC.Share.statuses[itemSource] === 'undefined') {
 				$('#expiration').hide('blind');
@@ -705,6 +738,7 @@ $(document).ready(function() {
 			if (oc_appconfig.core.enforcePasswordForPublicLink === false) {
 				OC.Share.share(itemType, itemSource, OC.Share.SHARE_TYPE_LINK, '', OC.PERMISSION_READ, itemSourceName, expirationDate, function(data) {
 					OC.Share.showLink(data.token, null, itemSource);
+					$('#dropdown').trigger(new $.Event('sharesChanged', {itemShares: OC.Share.itemShares}));
 					OC.Share.updateIcon(itemType, itemSource);
 				});
 			} else {
